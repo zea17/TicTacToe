@@ -2,6 +2,8 @@
 #include "setup.hpp"
 
 int main() {
-choose_number_of_players();
-
+    if (choose_number_of_players() == 1){
+        
+        chooseGameLevel();
+    }
 }
