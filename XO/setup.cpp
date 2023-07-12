@@ -1,6 +1,8 @@
 #include <iostream>
 #include "setup.hpp"
 
+
+
 // This function prompts the user to enter the dimensions of the Tic-Tac-Toe board
 // and returns the entered size as an integer.
 
@@ -46,6 +48,7 @@ int chooseGameLevel() {
     std::cout << "1 - Easy" << std::endl;
     std::cout << "2 - Medium" << std::endl;
     std::cout << "3 - Hard" << std::endl;
+    std::cout << "4 - Back" << std::endl;
     std::cin >> choice;
 
     switch (choice) {
@@ -55,8 +58,11 @@ int chooseGameLevel() {
         return 2;
       case 3:
         return 3;
+        case 4:
+            return choose_number_of_players();
       default:
         std::cout << "Invalid input. Please enter 1, 2, or 3." << std::endl;
     }
   }
 }
+
