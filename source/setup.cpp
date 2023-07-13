@@ -31,6 +31,8 @@ int choose_number_of_players()
     std::cout << "Choose the number of players:" << std::endl;
     std::cout << "1 - Play against the computer" << std::endl;
     std::cout << "2 - Play against a friend" << std::endl;
+    std::cout << "3 - Back" << std::endl;
+
     std::cin >> number_of_players;
     switch (number_of_players)
     {
@@ -38,6 +40,9 @@ int choose_number_of_players()
     case 2:
       clean_screen();
       return number_of_players;
+    case 3:
+      clean_screen();
+      return choose_dimension();
     default:
       std::cout << "Invalid input. Please enter 1 or 2." << std::endl;
     }
