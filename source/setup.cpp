@@ -14,6 +14,7 @@ int choose_dimension()
   int size;
   std::cout << "Enter the dimensions of the Tic-Tac-Toe board: ";
   std::cin >> size;
+  clean_screen();
   return size;
 }
 
