@@ -12,8 +12,16 @@ void clean_screen()
 int choose_dimension()
 {
   int size;
-  std::cout << "Enter the dimensions of the Tic-Tac-Toe board: ";
-  std::cin >> size;
+  while (true)
+  {
+    std::cout << "Enter the dimensions of the Tic-Tac-Toe board: ";
+    std::cin >> size;
+    if (size < 10)
+    {
+      return size;
+    }
+    std::cout << "The dimension must be less than 10." << std::endl;
+  }
   return size;
 }
 
