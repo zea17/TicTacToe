@@ -66,9 +66,9 @@
     {
       "id": "pointer:pointer",
       "typeName": "pointer",
-      "x": -55.39074906020804,
-      "y": 263.01026410190786,
-      "lastActivityTimestamp": 1689503659545,
+      "x": 0.693970752723061,
+      "y": 258.58702751396515,
+      "lastActivityTimestamp": 1689505165691,
       "meta": {}
     },
     {
@@ -79,9 +79,9 @@
       "typeName": "page"
     },
     {
-      "x": 238.23064747614808,
-      "y": 331.59034224679954,
-      "z": 0.7371544786870748,
+      "x": 243.0748635531986,
+      "y": 519.604173681493,
+      "z": 0.6428669930108172,
       "meta": {},
       "id": "camera:page:Itn9cb44i5AsTKhrCYjxF",
       "typeName": "camera"
@@ -150,7 +150,7 @@
         "w": 129.44140625,
         "h": 110.078125,
         "geo": "rectangle",
-        "color": "violet",
+        "color": "grey",
         "labelColor": "black",
         "fill": "semi",
         "dash": "draw",
@@ -427,35 +427,6 @@
       "typeName": "shape"
     },
     {
-      "x": 636.0390977247785,
-      "y": -448.8335059912487,
-      "rotation": 0,
-      "isLocked": false,
-      "opacity": 1,
-      "meta": {},
-      "type": "geo",
-      "props": {
-        "w": 145,
-        "h": 108.60102480586073,
-        "geo": "rectangle",
-        "color": "violet",
-        "labelColor": "black",
-        "fill": "semi",
-        "dash": "draw",
-        "size": "s",
-        "font": "sans",
-        "text": "storage file\nfor keep data of game",
-        "align": "middle",
-        "verticalAlign": "middle",
-        "growY": 0,
-        "url": ""
-      },
-      "parentId": "page:Itn9cb44i5AsTKhrCYjxF",
-      "index": "a3G",
-      "id": "shape:71mAVVq_GWWneLfXFruBQ",
-      "typeName": "shape"
-    },
-    {
       "x": 239.45496789866763,
       "y": -259.5928639658367,
       "rotation": 0,
@@ -467,7 +438,7 @@
         "w": 130.5428482349094,
         "h": 126.02280897202128,
         "geo": "rectangle",
-        "color": "violet",
+        "color": "black",
         "labelColor": "black",
         "fill": "semi",
         "dash": "draw",
@@ -485,51 +456,8 @@
       "typeName": "shape"
     },
     {
-      "x": 302.45586839561867,
-      "y": -188.57700492959344,
-      "rotation": 0,
-      "isLocked": false,
-      "opacity": 0.75,
-      "meta": {},
-      "type": "arrow",
-      "parentId": "page:Itn9cb44i5AsTKhrCYjxF",
-      "index": "a3M",
-      "props": {
-        "dash": "draw",
-        "size": "s",
-        "fill": "semi",
-        "color": "violet",
-        "labelColor": "black",
-        "bend": 0,
-        "start": {
-          "type": "binding",
-          "boundShapeId": "shape:6Fe5uLhBiWmU1Fz__Y6vK",
-          "normalizedAnchor": {
-            "x": 0.5,
-            "y": 0.5
-          },
-          "isExact": false
-        },
-        "end": {
-          "type": "binding",
-          "boundShapeId": "shape:71mAVVq_GWWneLfXFruBQ",
-          "normalizedAnchor": {
-            "x": 0.5,
-            "y": 0.5
-          },
-          "isExact": false
-        },
-        "arrowheadStart": "none",
-        "arrowheadEnd": "arrow",
-        "text": "",
-        "font": "sans"
-      },
-      "id": "shape:awK8NshuxddzgzqSzhl9A",
-      "typeName": "shape"
-    },
-    {
-      "x": 587.2550486092011,
-      "y": -261.6075779019951,
+      "x": 856.1675948737925,
+      "y": 200.60408987762622,
       "rotation": 0,
       "isLocked": false,
       "opacity": 1,
@@ -600,8 +528,8 @@
       "typeName": "shape"
     },
     {
-      "x": 664.1298516836671,
-      "y": -85.57624566435376,
+      "x": 672.6852761490626,
+      "y": 210.18745167451502,
       "rotation": 0,
       "isLocked": false,
       "opacity": 1,
@@ -672,8 +600,8 @@
       "typeName": "shape"
     },
     {
-      "x": 469.93989709506764,
-      "y": -29.575925058976935,
+      "x": 510.45056109420966,
+      "y": 217.89944967584475,
       "rotation": 0,
       "isLocked": false,
       "opacity": 1,
@@ -744,8 +672,8 @@
       "typeName": "shape"
     },
     {
-      "x": 375.37361961541745,
-      "y": 95.72877583851894,
+      "x": 334.9905578277621,
+      "y": 229.9541497309814,
       "rotation": 0,
       "isLocked": false,
       "opacity": 1,
@@ -813,6 +741,78 @@
         "font": "sans"
       },
       "id": "shape:tfQTsJdCsxeFBT9C5gBXk",
+      "typeName": "shape"
+    },
+    {
+      "x": 531.5060485128515,
+      "y": -303.159904744875,
+      "rotation": 0,
+      "isLocked": false,
+      "opacity": 1,
+      "meta": {},
+      "id": "shape:pr8d6-JCkpOSP7XM2Uiy6",
+      "type": "geo",
+      "props": {
+        "w": 131,
+        "h": 126.02280897202128,
+        "geo": "rectangle",
+        "color": "grey",
+        "labelColor": "black",
+        "fill": "semi",
+        "dash": "draw",
+        "size": "s",
+        "font": "sans",
+        "text": "storage manager",
+        "align": "middle",
+        "verticalAlign": "middle",
+        "growY": 0,
+        "url": ""
+      },
+      "parentId": "page:Itn9cb44i5AsTKhrCYjxF",
+      "index": "a7",
+      "typeName": "shape"
+    },
+    {
+      "x": 300.4011840561101,
+      "y": -201.0239856696411,
+      "rotation": 0,
+      "isLocked": false,
+      "opacity": 0.75,
+      "meta": {},
+      "id": "shape:f74net-mtJL_8Ru2vmdGm",
+      "type": "arrow",
+      "parentId": "page:Itn9cb44i5AsTKhrCYjxF",
+      "index": "a8",
+      "props": {
+        "dash": "draw",
+        "size": "s",
+        "fill": "semi",
+        "color": "violet",
+        "labelColor": "black",
+        "bend": 0,
+        "start": {
+          "type": "binding",
+          "boundShapeId": "shape:6Fe5uLhBiWmU1Fz__Y6vK",
+          "normalizedAnchor": {
+            "x": 0.5,
+            "y": 0.5
+          },
+          "isExact": false
+        },
+        "end": {
+          "type": "binding",
+          "boundShapeId": "shape:pr8d6-JCkpOSP7XM2Uiy6",
+          "normalizedAnchor": {
+            "x": 0.5,
+            "y": 0.5
+          },
+          "isExact": false
+        },
+        "arrowheadStart": "none",
+        "arrowheadEnd": "arrow",
+        "text": "",
+        "font": "sans"
+      },
       "typeName": "shape"
     }
   ]
