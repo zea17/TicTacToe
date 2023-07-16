@@ -94,6 +94,10 @@ void setup()
       {
         level -= 2;
       }
+      if (number_of_players == 2)
+      {
+        break;
+      }
     }
     if (level == 3)
     {
