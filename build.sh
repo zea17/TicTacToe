@@ -1,10 +1,17 @@
 #!/bin/bash
 
-g++ -c source/main.cpp -o bin/main.o
-g++ -c source/setup.cpp -o bin/setup.o
-g++ -c source/storage_manager.cpp -o bin/storage_manager.o
+# Create bin directory if it doesn't exist
+mkdir -p bin
 
-g++ bin/main.o bin/setup.o bin/storage_manager.o -o bin/ttt
+for file in source/*.cpp; do
+    filename=$(basename "$file")
+    object_file="bin/${filename%.*}.o"
+    g++ -c "$file" -o "$object_file"
+done
+
+
+# Link the object files and create the binary at bin/app
+g++ bin/*.o -o ./bin/ttt
 
 clear
 ./bin/ttt
