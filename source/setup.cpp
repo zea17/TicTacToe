@@ -18,11 +18,11 @@ int choose_dimension()
   {
     std::cout << "Enter the dimensions of the Tic-Tac-Toe board: ";
     std::cin >> size;
-    if (size < 10)
+    if (size < 11 && size > 2)
     {
       return size;
     }
-    std::cout << "The dimension must be less than 10." << std::endl;
+    std::cout << "The dimension must be less than 10 and greater that 3." << std::endl;
   }
   return size;
 }
