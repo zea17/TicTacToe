@@ -21,3 +21,8 @@ void load_state()
     std::fstream settings_file;
     settings_file.open(SETTING_FILE_PATH, std::ios::in);
 }
+
+void save_state()
+{
+    std::ofstream file(SETTING_FILE_PATH);
+}

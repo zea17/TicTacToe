@@ -1,6 +1,8 @@
 #include <iostream>
 #include "setup.hpp"
 #include <stdlib.h>
+#include "globals.hpp"
+
 void clean_screen()
 {
   system("clear");
@@ -93,11 +95,11 @@ void setup()
 
     if (level == 1)
     {
-      choose_dimension();
+      dimension = choose_dimension();
     }
     if (level == 2)
     {
-      int number_of_players = choose_number_of_players();
+      number_of_players = choose_number_of_players();
       if (number_of_players == 3)
       {
         level -= 2;
@@ -109,7 +111,7 @@ void setup()
     }
     if (level == 3)
     {
-      int game_level = choose_game_level();
+      game_level = choose_game_level();
       if (game_level == 4)
       {
         level -= 2;
