@@ -1,0 +1,1 @@
+bool does_state_exists();
