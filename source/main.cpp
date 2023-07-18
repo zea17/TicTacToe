@@ -1,9 +1,14 @@
 #include <iostream>
+
 #include "globals.hpp"
+#include "grid.hpp"
 #include "setup.hpp"
 #include "storage_manager.hpp"
-int main()
-{
-    // setup();
-    std::cout << does_state_exists();
+#include "terminal.hpp"
+
+int main() {
+  // setup();
+  setup();
+  create_grid();
+  render_game();
 }

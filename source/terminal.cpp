@@ -36,11 +36,58 @@ int *compute_cell_padding(int cell_width, int content_width) {
 void render_cell(int cell_width, int cell_number, char cell_content,
                  bool is_last_column) {
 
+  // sizes
+  int content_width = compute_content_width(cell_content, cell_number);
+  int *paddings = compute_cell_padding(cell_width, content_width);
+  int left_padding = paddings[0];
+  int right_padding = paddings[1];
+
+  // content
+  print_repeated_text(" ", left_padding);
   if (cell_content == '-') {
     std::cout << cell_number;
   } else {
     std::cout << cell_content;
   }
+  print_repeated_text(" ", right_padding);
+
+  // new line or boarder
+  if (is_last_column) {
+    std::cout << std::endl;
+  } else {
+    std::cout << "│";
+  }
+}
+void render_horizontal_lines(int cell_width) {
+  for (int column = 0; column < dimension; column++) {
+    bool is_last_column = column == dimension - 1;
+    print_repeated_text("─", cell_width);
+    if (is_last_column) {
+      std::cout << std::endl;
+    } else {
+      std::cout << "┼";
+    }
+  }
 }
 
-void render_game() {}
+void render_game() {
+  int cell_width = compute_cell_width();
+  int cell_number = 1;
+
+  for (int row = 0; row < dimension; row++) {
+    bool is_not_last_row = row != dimension - 1;
+
+    // row content
+    for (int column = 0; column < dimension; column++) {
+      char cell_content = grid[row][column];
+      bool is_last_column = column == dimension - 1;
+      render_cell(cell_width, cell_number, cell_content, is_last_column);
+      cell_number++;
+    }
+
+    // horinzontal line
+    if (is_not_last_row) {
+      render_horizontal_lines(cell_width);
+    }
+  }
+}
