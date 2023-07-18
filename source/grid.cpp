@@ -21,13 +21,3 @@ void create_grid() {
   allocate_grid();
   initialize_grid();
 }
-
-void print_repeated_text(char *text, int repeat) {
-  if (repeat == 0) {
-    return;
-  }
-  std::cout << text;
-  print_repeated_text(text, repeat - 1);
-}
-
-void render_game() {}
