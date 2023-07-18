@@ -22,17 +22,12 @@ void create_grid() {
   initialize_grid();
 }
 
-void render_grid() {
-  for (int row = 0; row < dimension; row++) {
-    for (int column = 0; column < dimension; column++) {
-      if (column < dimension - 1) {
-        for (int i = 0; i < dimension / 2; i++) {
-          std::cout << "─";
-        }
-        std::cout << "│";
-      } else {
-        std::cout << std::endl;
-      }
-    }
+void print_repeated_text(char *text, int repeat) {
+  if (repeat == 0) {
+    return;
   }
+  std::cout << text;
+  print_repeated_text(text, repeat - 1);
 }
+
+void render_game() {}
