@@ -18,4 +18,21 @@ int compute_cell_width() {
   return digits + 2;
 }
 
+int *compute_cell_padding(int cell_width, int content_width) {
+  int left_padding = (cell_width - content_width) / 2;
+  int right_padding = cell_width - content_width - left_padding;
+  int result[2] = {left_padding, right_padding};
+  return result;
+}
+
+void render_cell(int cell_width, int cell_number, char cell_content,
+                 bool is_last_column) {
+
+  if (cell_content == '-') {
+    std::cout << cell_number;
+  } else {
+    std::cout << cell_content;
+  }
+}
+
 void render_game() {}
