@@ -11,11 +11,19 @@ void print_repeated_text(char *text, int repeat) {
   std::cout << text;
   print_repeated_text(text, repeat - 1);
 }
+int compute_number_digits(int number) { return int(log10(number)) + 1; }
 
 int compute_cell_width() {
   int max_number = pow(dimension, 2);
-  int digits = int(log10(max_number)) + 1;
+  int digits = compute_number_digits(max_number);
   return digits + 2;
+}
+
+int compute_content_width(char cell_content, int cell_number) {
+  if (cell_content == '-') {
+    return compute_number_digits(cell_number);
+  }
+  return 1;
 }
 
 int *compute_cell_padding(int cell_width, int content_width) {
