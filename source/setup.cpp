@@ -1,9 +1,9 @@
-#include "setup.hpp"
-#include "globals.hpp"
 #include <iostream>
 #include <stdlib.h>
 
-void clean_screen() { system("clear"); }
+#include "globals.hpp"
+#include "setup.hpp"
+#include "terminal.hpp"
 
 // This function prompts the user to enter the dimensions of the Tic-Tac-Toe
 // board and returns the entered size as an integer.

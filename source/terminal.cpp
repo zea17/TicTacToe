@@ -4,6 +4,8 @@
 #include "globals.hpp"
 #include "terminal.hpp"
 
+void clean_screen() { system("clear"); }
+
 void print_repeated_text(char *text, int repeat) {
   if (repeat == 0) {
     return;
@@ -11,6 +13,7 @@ void print_repeated_text(char *text, int repeat) {
   std::cout << text;
   print_repeated_text(text, repeat - 1);
 }
+
 int compute_number_digits(int number) { return int(log10(number)) + 1; }
 
 int compute_cell_width() {
