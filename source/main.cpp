@@ -10,5 +10,7 @@ int main() {
   // setup();
   setup();
   create_grid();
+
+  load_state();
   render_game();
 }

@@ -5,8 +5,7 @@
 #include "setup.hpp"
 #include "terminal.hpp"
 
-// This function prompts the user to enter the dimensions of the Tic-Tac-Toe
-// board and returns the entered size as an integer.
+// ─── Choose The Dimension Of The Tic-tac-toe Board. ──────────────────────────
 
 int choose_dimension() {
   int size;
@@ -21,11 +20,7 @@ int choose_dimension() {
   return size;
 }
 
-// This function prompts the user to choose the number of players for a
-// Tic-Tac-Toe game and returns the entered number as an integer. Use a while
-// loop to repeatedly prompt the user for input until a valid input Display the
-// options for the number of players If the input is anything else, display an
-// error message and ask the user to enter the number of players again
+// ─── Choose The Number Of Players ────────────────────────────────────────────
 
 int choose_number_of_players() {
   int number_of_players;
@@ -47,9 +42,7 @@ int choose_number_of_players() {
   }
 }
 
-// This function prompts the user to choose the game level for a Tic-Tac-Toe
-// game and returns the entered level as an integer (1 for Easy, 2 for Medium, 3
-// for Hard).
+// ─── Choose The Game Level ───────────────────────────────────────────────────
 
 int choose_game_level() {
   int choice;
@@ -74,6 +67,8 @@ int choose_game_level() {
     }
   }
 }
+
+// ─── Perform The Setup For The Game. ─────────────────────────────────────────
 
 void setup() {
   int level = 1;

@@ -7,16 +7,23 @@
 
 #define SETTING_FILE_PATH ".zeattt.txt"
 
+// ─── Checks If A Saved Game State Exists ─────────────────────────────────────
+
 bool does_state_exists() {
   std::ifstream settings_file;
   settings_file.open(SETTING_FILE_PATH, std::ios::in);
   return !settings_file.fail();
 }
-// line 1 = dimension
-// line 2 = number of players
-// line 3 = game level
-//
+
+// ─── Loads The Saved Game State From A File ──────────────────────────────────
+
 void load_state() {
+
+  // The first line in the file is the dimension of the game grid
+  // The second line in the file is the number of players
+  // The third line in the file is the game level
+  // The remaining lines in the file are the contents of the game grid
+
   std::ifstream setting_file(SETTING_FILE_PATH);
   setting_file >> dimension >> number_of_players >> game_level;
   for (int row = 0; row < dimension; row++) {
@@ -25,6 +32,8 @@ void load_state() {
 
   setting_file.close();
 }
+
+// ─── Saves The Current Game State To A File ──────────────────────────────────
 
 void save_state() {
   std::ofstream setting_file(SETTING_FILE_PATH);
