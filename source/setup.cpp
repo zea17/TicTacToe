@@ -3,9 +3,22 @@
 
 #include "globals.hpp"
 #include "setup.hpp"
+#include "storage_manager.hpp"
 #include "terminal.hpp"
 
-// ─── Choose The Dimension Of The Tic-tac-toe Board. ──────────────────────────
+bool ask_user_should_we_load_previous_game() {
+  bool should_continue;
+
+  std::cout << "Would you like to load your previous game or start a new one?"
+            << std::endl;
+  std::cout << "1 for yes" << std::endl;
+  std::cout << "anything else for no" << std::endl;
+  std::cin >> should_continue;
+
+  return should_continue == 1;
+}
+
+// ─── Dimension Of The Tic-tac-toe ────────────────────────────────────────────
 
 int choose_dimension() {
   int size;
@@ -20,7 +33,8 @@ int choose_dimension() {
   return size;
 }
 
-// ─── Choose The Number Of Players ────────────────────────────────────────────
+// ─── Choose The Number Of Players
+// ────────────────────────────────────────────
 
 int choose_number_of_players() {
   int number_of_players;
@@ -42,7 +56,8 @@ int choose_number_of_players() {
   }
 }
 
-// ─── Choose The Game Level ───────────────────────────────────────────────────
+// ─── Choose The Game Level
+// ───────────────────────────────────────────────────
 
 int choose_game_level() {
   int choice;
@@ -68,7 +83,8 @@ int choose_game_level() {
   }
 }
 
-// ─── Perform The Setup For The Game. ─────────────────────────────────────────
+// ─── Perform The Setup For The Game.
+// ─────────────────────────────────────────
 
 void setup() {
   int level = 1;
