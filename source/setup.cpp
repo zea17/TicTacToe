@@ -83,10 +83,7 @@ int choose_game_level() {
   }
 }
 
-// ─── Perform The Setup For The Game.
-// ─────────────────────────────────────────
-
-void setup() {
+void game_wizard() {
   int level = 1;
   while (level < 4) {
     clean_screen();
@@ -111,4 +108,14 @@ void setup() {
     }
     level++;
   }
+}
+
+void setup() {
+  if (does_state_exists()) {
+    if (ask_user_should_we_load_previous_game()) {
+      load_state();
+      return;
+    }
+  }
+  game_wizard();
 }
