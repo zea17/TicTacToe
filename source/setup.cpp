@@ -2,12 +2,13 @@
 #include <stdlib.h>
 
 #include "globals.hpp"
+#include "grid.hpp"
 #include "setup.hpp"
 #include "storage_manager.hpp"
 #include "terminal.hpp"
 
 bool ask_user_should_we_load_previous_game() {
-  bool should_continue;
+  int should_continue;
 
   std::cout << "Would you like to load your previous game or start a new one?"
             << std::endl;
@@ -118,4 +119,5 @@ void setup() {
     }
   }
   game_wizard();
+  create_grid();
 }
