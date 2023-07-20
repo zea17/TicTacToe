@@ -10,7 +10,7 @@ void clean_screen() { system("clear"); }
 
 // ─── Prints A Given Text Repeatedly For A Specified Number Of Times ──────────
 
-void print_repeated_text(char *text, int repeat) {
+void print_repeated_text(const char *text, int repeat) {
   if (repeat == 0) {
     return;
   }
@@ -39,15 +39,6 @@ int compute_content_width(char cell_content, int cell_number) {
   return 1;
 }
 
-// ─── Computes The Left And Right Padding For A Cell ──────────────────────────
-
-int *compute_cell_padding(int cell_width, int content_width) {
-  int left_padding = (cell_width - content_width) / 2;
-  int right_padding = cell_width - content_width - left_padding;
-  int result[2] = {left_padding, right_padding};
-  return result;
-}
-
 // ─── Renders A Single Cell In The Game Grid ──────────────────────────────────
 
 void render_cell(int cell_width, int cell_number, char cell_content,
@@ -55,9 +46,8 @@ void render_cell(int cell_width, int cell_number, char cell_content,
 
   // sizes
   int content_width = compute_content_width(cell_content, cell_number);
-  int *paddings = compute_cell_padding(cell_width, content_width);
-  int left_padding = paddings[0];
-  int right_padding = paddings[1];
+  int left_padding = (cell_width - content_width) / 2;
+  int right_padding = cell_width - content_width - left_padding;
 
   // ─── Content─────────────────────────────────────────────────────────────
 
@@ -94,6 +84,7 @@ void render_horizontal_lines(int cell_width) {
 // ─── Renders The Entire Game Grid ────────────────────────────────────────────
 
 void render_game() {
+  clean_screen();
   int cell_width = compute_cell_width();
   int cell_number = 1;
 
