@@ -12,6 +12,3 @@ done
 
 # Link the object files and create the binary at bin/app
 g++ bin/*.o -o ./bin/ttt
-
-clear
-./bin/ttt
