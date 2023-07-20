@@ -2,7 +2,7 @@
 #include "globals.hpp"
 #include "grid.hpp"
 
-int check_vertical_tie() {
+int find_vertical_tie_column() {
   for (int column = 0; column < dimension; column++) {
     int first_element = grid[0][column];
     bool is_tie = true;
@@ -18,7 +18,8 @@ int check_vertical_tie() {
   }
   return -1;
 }
-int check_horizontal_tie() {
+
+int find_horizontal_tie_row() {
   for (int row = 0; row < dimension; row++) {
     int first_element = grid[row][0];
     bool is_tie = true;
