@@ -7,4 +7,4 @@ char **grid;
 int winning_column = -1;
 int winning_row = -1;
 bool winning_ltr_diagonal = false;
-bool winning_rtl_diagonal = true;
+bool winning_rtl_diagonal = false;

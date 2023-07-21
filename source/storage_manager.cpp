@@ -3,6 +3,7 @@
 #include <string>
 
 #include "globals.hpp"
+#include "grid.hpp"
 #include "storage_manager.hpp"
 
 #define SETTING_FILE_PATH ".zeattt.txt"
@@ -15,8 +16,9 @@ bool does_state_exists() {
   return !settings_file.fail();
 }
 
-// ─── Loads The Saved Game State From A File ──────────────────────────────────
+// ─── Storing State ───────────────────────────────────────────────────────────
 
+/// @brief loads the state of the game from the storage file
 void load_state() {
 
   // The first line in the file is the dimension of the game grid
@@ -26,14 +28,13 @@ void load_state() {
 
   std::ifstream setting_file(SETTING_FILE_PATH);
   setting_file >> dimension >> number_of_players >> game_level;
+  allocate_grid();
   for (int row = 0; row < dimension; row++) {
     setting_file >> grid[row];
   }
 
   setting_file.close();
 }
-
-// ─── Saves The Current Game State To A File ──────────────────────────────────
 
 void save_state() {
   std::ofstream setting_file(SETTING_FILE_PATH);
