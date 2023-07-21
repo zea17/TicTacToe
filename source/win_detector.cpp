@@ -89,3 +89,19 @@ char detect_rtl_diagonal_win() {
 
   return EMPTY_VALUE;
 }
+
+char win_detector() {
+  if (winning_ltr_diagonal) {
+    return detect_ltr_diagonal_win();
+  }
+  if (winning_rtl_diagonal) {
+    return detect_rtl_diagonal_win();
+  }
+  if (winning_column != -1) {
+    return detect_column_win();
+  }
+  if (winning_row != -1) {
+    return detect_row_win();
+  }
+  return EMPTY_VALUE;
+}
