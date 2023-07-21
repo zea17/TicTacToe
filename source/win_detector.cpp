@@ -2,36 +2,58 @@
 #include "globals.hpp"
 #include "grid.hpp"
 
-int find_vertical_tie_column() {
+char detect_column_win() {
   for (int column = 0; column < dimension; column++) {
     int first_element = grid[0][column];
-    bool is_tie = true;
-    for (int row = 1; row < dimension; row++) {
-      if (grid[row][column] != first_element) {
-        is_tie = false;
-        break;
+
+    if (first_element != EMPTY_VALUE) {
+      bool is_tie = true;
+
+      for (int row = 1; row < dimension; row++) {
+        if (grid[row][column] != first_element) {
+          is_tie = false;
+          break;
+        }
+      }
+
+      if (is_tie) {
+        winning_column = column;
+        return grid[0][column];
       }
     }
-    if (is_tie) {
-      return column;
-    }
   }
-  return -1;
+  return EMPTY_VALUE;
 }
 
-int find_horizontal_tie_row() {
+char detect_row_win() {
   for (int row = 0; row < dimension; row++) {
     int first_element = grid[row][0];
-    bool is_tie = true;
-    for (int column = 1; column < dimension; column++) {
-      if (grid[row][column] != first_element) {
-        is_tie = false;
-        break;
+
+    if (first_element != EMPTY_VALUE) {
+      bool is_tie = true;
+
+      for (int column = 1; column < dimension; column++) {
+        if (grid[row][column] != first_element) {
+          is_tie = false;
+          break;
+        }
+      }
+
+      if (is_tie) {
+        winning_row = row;
+        return grid[row][0];
       }
     }
-    if (is_tie) {
-      return row;
+  }
+  return EMPTY_VALUE;
+}
+
+char detect_ltr_diagonal_win() {
+  for (int row = 0; row < dimension; row++) {
+    for (int column = 0; column < dimension; column++) {
+      int first_element
     }
   }
-  return -1;
 }
+
+bool detect_win() {}
