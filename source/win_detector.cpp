@@ -4,7 +4,7 @@
 
 char detect_column_win() {
   for (int column = 0; column < dimension; column++) {
-    int first_element = grid[0][column];
+    char first_element = grid[0][column];
 
     if (first_element != EMPTY_VALUE) {
       bool is_tie = true;
@@ -27,7 +27,7 @@ char detect_column_win() {
 
 char detect_row_win() {
   for (int row = 0; row < dimension; row++) {
-    int first_element = grid[row][0];
+    char first_element = grid[row][0];
 
     if (first_element != EMPTY_VALUE) {
       bool is_tie = true;
@@ -51,7 +51,7 @@ char detect_row_win() {
 char detect_ltr_diagonal_win() {
   for (int row = 0; row < dimension; row++) {
     for (int column = 0; column < dimension; column++) {
-      int first_element
+      int first_element = grid[row][column];
     }
   }
 }
