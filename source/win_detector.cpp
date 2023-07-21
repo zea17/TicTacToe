@@ -53,7 +53,7 @@ char detect_ltr_diagonal_win() {
 
   if (first_element != EMPTY_VALUE) {
     bool is_tie = true;
-    for (int i = 1; i <= dimension; i++) {
+    for (int i = 1; i < dimension; i++) {
       if (grid[i][i] != first_element) {
         is_tie = false;
         break;
@@ -61,6 +61,7 @@ char detect_ltr_diagonal_win() {
     }
 
     if (is_tie) {
+      ::winning_ltr_diagonal = true;
       return grid[0][0];
     }
   }
@@ -68,4 +69,23 @@ char detect_ltr_diagonal_win() {
   return EMPTY_VALUE;
 }
 
-bool detect_win() {}
+char detect_rtl_diagonal_win() {
+  char first_element = grid[0][dimension - 1];
+
+  if (first_element != EMPTY_VALUE) {
+    bool is_tie = true;
+    for (int i = 1; i < dimension; i++) {
+      if (grid[i][dimension - 1 - i] != first_element) {
+        is_tie = false;
+        break;
+      }
+    }
+
+    if (is_tie) {
+      winning_rtl_diagonal = true;
+      return grid[0][dimension - 1];
+    }
+  }
+
+  return EMPTY_VALUE;
+}
