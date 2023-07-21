@@ -49,11 +49,23 @@ char detect_row_win() {
 }
 
 char detect_ltr_diagonal_win() {
-  for (int row = 0; row < dimension; row++) {
-    for (int column = 0; column < dimension; column++) {
-      int first_element = grid[row][column];
+  char first_element = grid[0][0];
+
+  if (first_element != EMPTY_VALUE) {
+    bool is_tie = true;
+    for (int i = 1; i <= dimension; i++) {
+      if (grid[i][i] != first_element) {
+        is_tie = false;
+        break;
+      }
+    }
+
+    if (is_tie) {
+      return grid[0][0];
     }
   }
+
+  return EMPTY_VALUE;
 }
 
 bool detect_win() {}
