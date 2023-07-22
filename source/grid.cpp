@@ -28,13 +28,15 @@ void create_grid() {
 }
 
 char get_cell_at(int number) {
-  int row = floor(number / dimension);
-  int column = (number % dimension) - 1;
+  number--;
+  int row = ceil(number / dimension);
+  int column = (number - row * dimension);
   return grid[row][column];
 }
 
 void set_cell_at(int number, char value) {
-  int row = floor(number / dimension);
-  int column = (number % dimension) - 1;
+  number--;
+  int row = ceil(number / dimension);
+  int column = (number - row * dimension);
   grid[row][column] = value;
 }
