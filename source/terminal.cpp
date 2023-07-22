@@ -106,4 +106,12 @@ void render_game() {
       render_horizontal_lines(cell_width);
     }
   }
+  std::cout << std::endl << std::endl;
+}
+
+int prompt_user_for_play(char xo) {
+  int cell_number;
+  std::cout << "Player " << xo << ", enter your move : ";
+  std::cin >> cell_number;
+  return cell_number;
 }
