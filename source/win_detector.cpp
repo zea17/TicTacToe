@@ -91,17 +91,18 @@ char detect_rtl_diagonal_win() {
 }
 
 char win_detector() {
-  if (winning_ltr_diagonal) {
-    return detect_ltr_diagonal_win();
+  char winner = EMPTY_VALUE;
+  if ((winner = detect_ltr_diagonal_win()) != EMPTY_VALUE) {
+    return winner;
   }
-  if (winning_rtl_diagonal) {
-    return detect_rtl_diagonal_win();
+  if ((winner = detect_rtl_diagonal_win()) != EMPTY_VALUE) {
+    return winner;
   }
-  if (winning_column != -1) {
-    return detect_column_win();
+  if ((winner = detect_column_win()) != EMPTY_VALUE) {
+    return winner;
   }
-  if (winning_row != -1) {
-    return detect_row_win();
+  if ((winner = detect_row_win()) != EMPTY_VALUE) {
+    return winner;
   }
   return EMPTY_VALUE;
 }
