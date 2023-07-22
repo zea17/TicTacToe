@@ -26,3 +26,11 @@ void create_grid() {
   allocate_grid();
   initialize_grid();
 }
+
+char get_cell_at(int number) {
+  int row = floor(number / dimension);
+  int column = (number % dimension) - 1;
+  return grid[row][column];
+}
+
+void set_cell_at(int number, char value) {}
