@@ -11,7 +11,8 @@ void prompt_and_play_for_user(char xo) {
     set_cell_at(cell_number, xo);
   else {
     std::cout << "cell" << cell_number
-              << " is already filled please try another number" << std::endl;
+              << " is already filled. please choose another number"
+              << std::endl;
     prompt_and_play_for_user(xo);
   }
 }
