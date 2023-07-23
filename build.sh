@@ -1,6 +1,7 @@
 #!/bin/bash
 
 # Create bin directory if it doesn't exist
+rm -rf bin
 mkdir -p bin
 
 for file in source/*.cpp; do
