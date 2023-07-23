@@ -10,6 +10,7 @@
 
 void prompt_and_play_for_user(char xo) {
   int cell_number = prompt_user_for_play(xo);
+
   if (get_cell_at(cell_number) == EMPTY_VALUE) {
     set_cell_at(cell_number, xo);
   } else {
@@ -29,6 +30,16 @@ bool show_win_message_if_win_exist() {
   render_game();
   std::cout << "winner is : " << winner << " :)" << std::endl;
 
+  return true;
+}
+
+bool show_tie_message() {
+  if (detect_tie() == false) {
+    return false;
+  }
+
+  render_game();
+  std::cout << "nobody won :(" << std::endl;
   return true;
 }
 
@@ -55,7 +66,7 @@ void game_loop() {
       current_turn = X_VALUE;
     }
 
-    if (show_win_message_if_win_exist()) {
+    if (show_win_message_if_win_exist() || show_tie_message()) {
       delete_state();
       break;
     }
