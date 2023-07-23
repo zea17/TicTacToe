@@ -113,14 +113,23 @@ void render_game() {
   std::cout << std::endl << std::endl;
 }
 
-int prompt_user_for_play(char xo, int dimension) {
-  int cell_number;
-  std::cout << "Player " << xo << ", enter your move : ";
-  std::cin >> cell_number;
-  if (cell_number < MIN_NUMBER || cell_number > dimension * dimension) {
+int prompt_user_for_play(char xo) {
+  while (true) {
+    int cell_number;
+    std::cout << "Player " << xo << ", enter your move : ";
+    std::cin >> cell_number;
+    // with help from stack over flow
+    if (std::cin.fail()) {
+      std::cin.clear();
+      std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+      cell_number = 0;
+    }
+
+    if (cell_number >= MIN_NUMBER && cell_number <= dimension * dimension) {
+      return cell_number;
+    }
+
     std::cout << "Invalid move. Please enter a number between 1 and "
               << dimension * dimension << std::endl;
-    return prompt_user_for_play(xo, dimension);
   }
-  return cell_number;
 }
