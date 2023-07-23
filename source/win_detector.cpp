@@ -90,7 +90,7 @@ char detect_rtl_diagonal_win() {
   return EMPTY_VALUE;
 }
 
-char win_detector() {
+char detect_win() {
   char winner = EMPTY_VALUE;
   if ((winner = detect_ltr_diagonal_win()) != EMPTY_VALUE) {
     return winner;

@@ -1,2 +1,2 @@
 
-char win_detector();
+char detect_win();
