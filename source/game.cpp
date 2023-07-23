@@ -1,6 +1,6 @@
 #include <iostream>
 
-#include "easy_ai.hpp"
+#include "ai.hpp"
 #include "game.hpp"
 #include "globals.hpp"
 #include "grid.hpp"

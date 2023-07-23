@@ -1,3 +1,1 @@
-
-int generate_random(int, int);
-void play_with_ai(char);
+void play_with_easy_ai(char);

@@ -1,8 +1,5 @@
-#include <cstdlib>
-#include <ctime>
-#include <iostream>
-
 #include "easy_ai.hpp"
+#include "ai.hpp"
 #include "globals.hpp"
 #include "grid.hpp"
 
@@ -14,23 +11,5 @@ void play_with_easy_ai(char xo) {
       set_cell_at(number, xo);
       break;
     }
-  }
-}
-
-int generate_random(int min, int max) {
-  srand(time(NULL));
-  return min + rand() % (max - min + 1);
-}
-
-char choose_random_first_player() {
-  if (generate_random(1, 2) == 1) {
-    return X_VALUE;
-  }
-  return O_VALUE;
-}
-
-void play_with_ai(char xo) {
-  if (game_level == 1) {
-    play_with_easy_ai(xo);
   }
 }
