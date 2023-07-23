@@ -22,6 +22,13 @@ int generate_random(int min, int max) {
   return min + rand() % (max - min + 1);
 }
 
+char choose_random_first_player() {
+  if (generate_random(1, 2) == 1) {
+    return X_VALUE;
+  }
+  return O_VALUE;
+}
+
 void play_with_ai(char xo) {
   if (game_level == 1) {
     play_with_easy_ai(xo);
