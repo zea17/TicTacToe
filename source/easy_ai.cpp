@@ -2,7 +2,7 @@
 #include <ctime>
 #include <iostream>
 
-#include "ai.hpp"
+#include "easy_ai.hpp"
 #include "globals.hpp"
 #include "grid.hpp"
 

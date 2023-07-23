@@ -1,7 +1,7 @@
 #include <iostream>
 #include <stdlib.h>
 
-#include "ai.hpp"
+#include "easy_ai.hpp"
 #include "globals.hpp"
 #include "grid.hpp"
 #include "setup.hpp"
