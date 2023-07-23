@@ -1,8 +1,9 @@
+#include "terminal.hpp"
+
 #include <cmath>
 #include <iostream>
 
 #include "globals.hpp"
-#include "terminal.hpp"
 
 // ─── Clears The Screen ───────────────────────────────────────────────────────
 
@@ -43,7 +44,6 @@ int compute_content_width(char cell_content, int cell_number) {
 
 void render_cell(int cell_width, int cell_number, char cell_content,
                  bool is_last_column) {
-
   // sizes
   int content_width = compute_content_width(cell_content, cell_number);
   int left_padding = (cell_width - content_width) / 2;
@@ -55,7 +55,11 @@ void render_cell(int cell_width, int cell_number, char cell_content,
   if (cell_content == '-') {
     std::cout << cell_number;
   } else {
-    std::cout << cell_content;
+    if (cell_content == O_VALUE) {
+      std::cout << "\033[1;33m" << O_VALUE << "\033[0m";
+    } else {
+      std::cout << "\033[1;35m" << X_VALUE << "\033[0m";
+    }
   }
   print_repeated_text(" ", right_padding);
 
