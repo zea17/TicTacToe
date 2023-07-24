@@ -16,10 +16,11 @@ void allocate_grid() {
 void initialize_grid() {
   for (int row = 0; row < dimension; row++) {
     for (int column = 0; column < dimension; column++) {
-      grid[row][column] = '-';
+      grid[row][column] = EMPTY_VALUE;
     }
   }
 }
+
 // ─── Creates The Game Grid By Allocating Memory And Initializing Cells ───────
 
 void create_grid() {
@@ -47,6 +48,7 @@ void set_cell_at(int number, char value) {
 
 int count_played_moves() {
   int counter = 0;
+
   for (int row = 0; row < dimension; row++) {
     for (int column = 0; column < dimension; column++) {
       if (grid[row][column] != EMPTY_VALUE) {
@@ -54,5 +56,6 @@ int count_played_moves() {
       }
     }
   }
+
   return counter;
 }

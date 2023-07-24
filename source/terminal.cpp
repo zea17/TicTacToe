@@ -1,9 +1,10 @@
-#include "terminal.hpp"
-
 #include <cmath>
 #include <iostream>
 
 #include "globals.hpp"
+#include "terminal.hpp"
+
+#define LEFT_PADDING "  "
 
 // ─── Clears The Screen ───────────────────────────────────────────────────────
 
@@ -37,7 +38,7 @@ int compute_cell_width() {
 // ─── Computes The Width Of The Content In A Cell ─────────────────────────────
 
 int compute_content_width(char cell_content, int cell_number) {
-  if (cell_content == '-') {
+  if (cell_content == EMPTY_VALUE) {
     return compute_number_digits(cell_number);
   }
   return 1;
@@ -55,15 +56,19 @@ void render_cell(int cell_width, int cell_number, char cell_content,
   // ─── Content─────────────────────────────────────────────────────────────
 
   print_repeated_text(" ", left_padding);
-  if (cell_content == '-') {
+
+  if (cell_content == EMPTY_VALUE) {
     std::cout << cell_number;
-  } else {
+  }
+
+  else {
     if (cell_content == O_VALUE) {
       std::cout << "\033[1;33m" << O_VALUE << "\033[0m";
     } else {
       std::cout << "\033[1;35m" << X_VALUE << "\033[0m";
     }
   }
+
   print_repeated_text(" ", right_padding);
 
   // ─── New Line Or Boarder ─────────────────────────────────────────────
@@ -78,9 +83,12 @@ void render_cell(int cell_width, int cell_number, char cell_content,
 // ─── Renders The Horizontal Lines Between Rows In The Game Grid ──────────────
 
 void render_horizontal_lines(int cell_width) {
+  std::cout << LEFT_PADDING;
+
   for (int column = 0; column < dimension; column++) {
     bool is_last_column = column == dimension - 1;
     print_repeated_text("─", cell_width);
+
     if (is_last_column) {
       std::cout << std::endl;
     } else {
@@ -92,13 +100,14 @@ void render_horizontal_lines(int cell_width) {
 
 void render_game() {
   clean_screen();
+
   int cell_width = compute_cell_width();
   int cell_number = 1;
 
   for (int row = 0; row < dimension; row++) {
     bool is_not_last_row = row != dimension - 1;
 
-    // ─── Row Content───────────────────────────────────────────────────────
+    std::cout << LEFT_PADDING;
 
     for (int column = 0; column < dimension; column++) {
       char cell_content = grid[row][column];
@@ -107,8 +116,6 @@ void render_game() {
       cell_number++;
     }
 
-    // ─── Horinzontal Line───────────────────────────────────────────────
-
     if (is_not_last_row) {
       render_horizontal_lines(cell_width);
     }
@@ -116,11 +123,14 @@ void render_game() {
   std::cout << std::endl << std::endl;
 }
 
+// ─── Prompt User ─────────────────────────────────────────────────────────────
+
 int prompt_user_for_play(char xo) {
   while (true) {
     int cell_number;
-    std::cout << "Player " << xo << ", enter your move : ";
+    std::cout << "  Player " << xo << ", enter your move:\n\n  > ";
     std::cin >> cell_number;
+
     // with help from stack over flow
     if (std::cin.fail()) {
       std::cin.clear();
@@ -132,7 +142,7 @@ int prompt_user_for_play(char xo) {
       return cell_number;
     }
 
-    std::cout << "Invalid move. Please enter a number between 1 and "
-              << dimension * dimension << std::endl;
+    std::cout << "\n  🚦 Invalid move. Please enter a number between 1 and "
+              << dimension * dimension << "\n\n";
   }
 }

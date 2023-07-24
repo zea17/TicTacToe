@@ -15,10 +15,13 @@ void prompt_and_play_for_user(char xo) {
 
   if (get_cell_at(cell_number) == EMPTY_VALUE) {
     set_cell_at(cell_number, xo);
-  } else {
-    std::cout << "cell" << cell_number
-              << " is already filled. please choose another number"
-              << std::endl;
+  }
+
+  else {
+    std::cout << "  🚩 Cell" << cell_number << " is already filled."
+              << std::endl
+              << "  please choose another number" << std::endl;
+
     prompt_and_play_for_user(xo);
   }
 }
@@ -32,7 +35,10 @@ bool show_win_message_if_win_exist() {
   }
 
   render_game();
-  std::cout << "winner is : " << winner << " :)" << std::endl;
+
+  std::cout << "  💃🏻💃🏻 Winner is : " << winner << " :) 💃🏻💃🏻 "
+            << std::endl
+            << std::endl;
 
   return true;
 }
@@ -43,7 +49,10 @@ bool show_tie_message() {
   }
 
   render_game();
-  std::cout << "nobody won :(" << std::endl;
+  std::cout << "  Sorry but nobody won :(" << std::endl
+            << "  Maybe next time? " << std::endl
+            << std::endl;
+
   return true;
 }
 
