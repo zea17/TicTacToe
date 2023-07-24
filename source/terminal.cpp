@@ -46,6 +46,37 @@ int compute_content_width(char cell_content, int cell_number) {
 
 // ─── Renders A Single Cell In The Game Grid ──────────────────────────────────
 
+bool is_cell_a_winner(int cell_number) {
+  cell_number--;
+  int row = ceil(cell_number / dimension);
+  int column = (cell_number - row * dimension);
+
+  if (winning_column == column) {
+    return true;
+  }
+  if (winning_row == row) {
+    return true;
+  }
+  if (winning_ltr_diagonal && row == column) {
+    return true;
+  }
+  if (winning_rtl_diagonal && row == dimension - 1 - column) {
+    return true;
+  }
+
+  return false;
+}
+
+void print_cell_color(int cell_number, char cell_content) {
+  if (is_cell_a_winner(cell_number)) {
+    std::cout << "\033[1;32m";
+  } else if (cell_content == O_VALUE) {
+    std::cout << "\033[1;33m";
+  } else {
+    std::cout << "\033[1;35m";
+  }
+}
+
 void render_cell(int cell_width, int cell_number, char cell_content,
                  bool is_last_column) {
   // sizes
@@ -62,11 +93,8 @@ void render_cell(int cell_width, int cell_number, char cell_content,
   }
 
   else {
-    if (cell_content == O_VALUE) {
-      std::cout << "\033[1;33m" << O_VALUE << "\033[0m";
-    } else {
-      std::cout << "\033[1;35m" << X_VALUE << "\033[0m";
-    }
+    print_cell_color(cell_number, cell_content);
+    std::cout << cell_content << "\033[0m";
   }
 
   print_repeated_text(" ", right_padding);
