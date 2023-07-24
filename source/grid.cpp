@@ -40,3 +40,15 @@ void set_cell_at(int number, char value) {
   int column = (number - row * dimension);
   grid[row][column] = value;
 }
+
+int count_played_moves() {
+  int counter = 0;
+  for (int row = 0; row < dimension; row++) {
+    for (int column = 0; column < dimension; column++) {
+      if (grid[row][column] != EMPTY_VALUE) {
+        counter++;
+      }
+    }
+  }
+  return counter;
+}
