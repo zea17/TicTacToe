@@ -13,10 +13,13 @@
 bool ask_user_should_we_load_previous_game() {
   int should_continue;
 
-  std::cout << "Would you like to load your previous game or start a new one?"
+  std::cout << "───────────────────────────────────────────────────────────────"
             << std::endl
-            << "1 for yes" << std::endl
-            << "anything else for no" << std::endl;
+            << "  You didn't finish your previous game. Press 1 to continue"
+            << std::endl
+            << "  playing that game, and any other number to skip." << std::endl
+            << std::endl
+            << "  > ";
 
   std::cin >> should_continue;
   return should_continue == 1;
@@ -28,14 +31,23 @@ int choose_dimension() {
   int size;
 
   while (true) {
-    std::cout << "Enter the dimensions of the Tic-Tac-Toe board: ";
+    std::cout
+        << "───────────────────────────────────────────────────────────────"
+        << std::endl
+        << "  Enter the dimensions of the Tic-Tac-Toe board (3 and above): "
+        << std::endl
+        << std::endl
+        << "  > ";
+
     std::cin >> size;
 
     if (size > 2) {
       return size;
     }
 
-    std::cout << "The dimension must be greater that 3." << std::endl;
+    std::cout << std::endl
+              << "  ERROR: Dimension must be greater that 3, please try again:"
+              << std::endl;
   }
 
   return size;
@@ -47,10 +59,15 @@ int choose_number_of_players() {
   int number_of_players;
 
   while (true) {
-    std::cout << "Choose the number of players:" << std::endl;
-    std::cout << "1 - Play against the computer" << std::endl;
-    std::cout << "2 - Play against a friend" << std::endl;
-    std::cout << "3 - Back" << std::endl;
+    std::cout
+        << "───────────────────────────────────────────────────────────────"
+        << std::endl
+        << "  Choose the number of players:" << std::endl
+        << "  • 1 - Play against the computer" << std::endl
+        << "  • 2 - Play against a friend" << std::endl
+        << "  • 3 - Back" << std::endl
+        << std::endl
+        << "  > ";
 
     std::cin >> number_of_players;
 
@@ -72,11 +89,16 @@ int choose_game_level() {
   int choice;
 
   while (true) {
-    std::cout << "Choose the game level:" << std::endl;
-    std::cout << "1 - Easy" << std::endl;
-    std::cout << "2 - Medium" << std::endl;
-    std::cout << "3 - Hard" << std::endl;
-    std::cout << "4 - Back" << std::endl;
+    std::cout
+        << "───────────────────────────────────────────────────────────────"
+        << std::endl
+        << "  Choose the game level:" << std::endl
+        << "  • 1 - Easy" << std::endl
+        << "  • 2 - Medium" << std::endl
+        << "  • 3 - Hard" << std::endl
+        << "  • 4 - Back" << std::endl
+        << std::endl
+        << "  > ";
     std::cin >> choice;
 
     switch (choice) {
@@ -87,7 +109,8 @@ int choose_game_level() {
       return choice;
 
     default:
-      std::cout << "Invalid input. Please enter 1, 2, or 3." << std::endl
+      std::cout << "  ERROR: Invalid input. Please enter 1, 2, or 3."
+                << std::endl
                 << std::endl;
     }
   }
