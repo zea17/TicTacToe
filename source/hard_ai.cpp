@@ -1,4 +1,5 @@
 #include "ai.hpp"
+#include "easy_ai.hpp"
 #include "globals.hpp"
 #include "grid.hpp"
 #include "medium_ai.hpp"
@@ -34,7 +35,11 @@ bool play_second_move(char xo) {
     grid[center_index][center_index] = xo;
     return true;
   }
-  grid[0][dimension - 1] = xo;
+  if (grid[0][dimension - 1] == EMPTY_VALUE) {
+    grid[0][dimension - 1] = xo;
+    return true;
+  }
+  return false;
 }
 
 bool play_with_fork_strategy(char xo) {
@@ -51,13 +56,16 @@ bool play_with_fork_strategy(char xo) {
         }
         if (grid[row_index][get_opposite_index(column_index)] == EMPTY_VALUE) {
           grid[get_opposite_index(row_index)][column_index] = xo;
+          return true;
         }
       }
     }
   }
+  return false;
 }
 
-bool play_on_row_win_strategy_(char xo) {
+bool play_on_row_win_strategy(char xo) {
+  char opponent = get_opponent(xo);
   // for each row
   for (int column = 0; column < dimension; column++) {
 
@@ -68,11 +76,14 @@ bool play_on_row_win_strategy_(char xo) {
       }
     }
     // if it was enough, try to put your turn in the middle:
-    if (count == 2) {
+    if (count == dimension - 1) {
       for (int row = 0; row < dimension; row++) {
         if (grid[row][column] == EMPTY_VALUE) {
           grid[row][column] = xo;
           return true;
+        }
+        if (grid[row][column] == opponent) {
+          return false;
         }
       }
     }
@@ -80,7 +91,8 @@ bool play_on_row_win_strategy_(char xo) {
   return false;
 }
 
-bool play_column_win_strategy(char xo) {
+bool play_on_column_win_strategy(char xo) {
+  char opponent = get_opponent(xo);
   // for each row
   for (int row = 0; row < dimension; row++) {
     // count how many times the opponent has appeared
@@ -94,15 +106,89 @@ bool play_column_win_strategy(char xo) {
     }
 
     // if it was enough, try to put your turn in the middle:
-    if (count == 2) {
+    if (count == dimension - 1) {
       for (int column = 0; column < dimension; column++) {
         if (grid[row][column] == EMPTY_VALUE) {
           grid[row][column] = xo;
           return true;
         }
+        if (grid[row][column] == opponent) {
+          return false;
+        }
       }
     }
   }
+  return false;
+}
+
+bool play_on_rtf_diagonal_win_strategy(char xo) {
+  int count = 0;
+  char opponent = get_opponent(xo);
+
+  for (int index = 0; index < dimension; index++) {
+    int column = dimension - 1 - index;
+
+    if (grid[index][column] == xo) {
+      count++;
+    }
+  }
+
+  if (count == dimension - 1) {
+    for (int index = 0; index < dimension; index++) {
+      int column = dimension - 1 - index;
+
+      if (grid[index][column] == EMPTY_VALUE) {
+        grid[index][column] = xo;
+        return true;
+      }
+      if (grid[index][column] == opponent) {
+        return false;
+      }
+    }
+  }
+
+  return false;
+}
+
+bool play_on_ltr_diagonal_win_strategy(char xo) {
+  int count = 0;
+  char opponent = get_opponent(xo);
+
+  for (int index = 0; index < dimension; index++) {
+    if (grid[index][index] == xo) {
+      count++;
+    }
+  }
+
+  if (count == dimension - 1) {
+    for (int index = 0; index < dimension; index++) {
+      if (grid[index][index] == EMPTY_VALUE) {
+        grid[index][index] = xo;
+        return true;
+      }
+      if (grid[index][index] == opponent) {
+        return false;
+      }
+    }
+  }
+
+  return false;
+}
+
+bool play_move_to_win(char xo) {
+  if (play_on_row_win_strategy(xo)) {
+    return true;
+  }
+  if (play_on_column_win_strategy(xo)) {
+    return true;
+  }
+  if (play_on_ltr_diagonal_win_strategy(xo)) {
+    return true;
+  }
+  if (play_on_rtf_diagonal_win_strategy(xo)) {
+    return true;
+  }
+  return false;
 }
 
 void play_with_hard_ai(char xo) {
@@ -110,9 +196,21 @@ void play_with_hard_ai(char xo) {
 
   if (moves_count == 0) {
     play_first_move(xo);
+    return;
   }
 
-  else if (moves_count <= 2) {
-    play_second_move(xo);
+  if (moves_count <= 2 && play_second_move(xo)) {
+    return;
   }
+  if (play_move_to_win(xo)) {
+    return;
+  }
+  if (play_with_defend(xo)) {
+    return;
+  }
+  if (play_with_fork_strategy(xo)) {
+    return;
+  }
+
+  play_with_easy_ai(xo);
 }

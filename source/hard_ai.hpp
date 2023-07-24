@@ -1,0 +1,1 @@
+void play_with_hard_ai(char);
