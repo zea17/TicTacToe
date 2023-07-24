@@ -4,7 +4,7 @@
 #include "grid.hpp"
 #include "medium_ai.hpp"
 
-#include <iostream>
+// ─── Tools ───────────────────────────────────────────────────────────────────
 
 bool dimension_is_odd() { return dimension % 2 == 1; }
 
@@ -16,6 +16,8 @@ int get_opposite_index(int index) {
   }
   return 0;
 }
+
+// ─── Compute The Chance To Win ───────────────────────────────────────────────
 
 int compute_row_chance(int row, int column, char xo) {
   char opponent = get_opponent(xo);
@@ -95,7 +97,9 @@ int compute_win_chance(int row, int column, char xo) {
   return win_chance;
 }
 
-bool block_opponent(char xo) {
+// ─── Play By Blocking Opponent ───────────────────────────────────────────────
+
+bool play_by_blocking_opponent(char xo) {
   char opponent = get_opponent(xo);
   int threshold = 2 * (dimension - 1);
   for (int row = 0; row < dimension; row++) {
@@ -112,6 +116,8 @@ bool block_opponent(char xo) {
   }
   return false;
 }
+
+// ─── Play The Best Move Possible ─────────────────────────────────────────────
 
 bool play_best_move(char xo) {
   int max_opportunity = 0;
@@ -138,7 +144,9 @@ bool play_best_move(char xo) {
   return false;
 }
 
-bool play_first_move(char xo) {
+// ─── Play The Best First Move ────────────────────────────────────────────────
+
+bool play_the_best_first_move(char xo) {
   int center_index = get_center();
   if (grid[center_index][center_index] == EMPTY_VALUE && dimension_is_odd()) {
     grid[center_index][center_index] = xo;
@@ -150,6 +158,8 @@ bool play_first_move(char xo) {
   }
   return false;
 }
+
+// ─── Play By Blocking Opponent ───────────────────────────────────────────────
 
 bool second_move(char xo) {
   char opponent = get_opponent(xo);
@@ -241,6 +251,8 @@ bool second_move(char xo) {
 
   return false;
 }
+
+// ─── Play The Winning Move ───────────────────────────────────────────────────
 
 bool play_on_row_win_strategy(char xo) {
   char opponent = get_opponent(xo);
@@ -353,7 +365,7 @@ bool play_on_ltr_diagonal_win_strategy(char xo) {
   return false;
 }
 
-bool play_move_to_win(char xo) {
+bool play_the_move_to_win(char xo) {
   if (play_on_row_win_strategy(xo)) {
     return true;
   }
@@ -369,10 +381,12 @@ bool play_move_to_win(char xo) {
   return false;
 }
 
+// ─── Main Playing Function ───────────────────────────────────────────────────
+
 void play_with_hard_ai(char xo) {
   int moves_count = count_played_moves();
 
-  if (moves_count < 2 && play_first_move(xo)) {
+  if (moves_count < 2 && play_the_best_first_move(xo)) {
     return;
   }
   if (play_with_defend(xo)) {
@@ -381,12 +395,10 @@ void play_with_hard_ai(char xo) {
   if (moves_count >= 2 && moves_count < 4 && second_move(xo)) {
     return;
   }
-
-  if (play_move_to_win(xo)) {
+  if (play_the_move_to_win(xo)) {
     return;
   }
-
-  if (block_opponent(xo)) {
+  if (play_by_blocking_opponent(xo)) {
     return;
   }
   if (play_best_move(xo)) {
