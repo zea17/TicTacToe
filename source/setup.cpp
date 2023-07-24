@@ -150,9 +150,30 @@ void game_wizard() {
   }
 }
 
+// ─── Welcome Message ─────────────────────────────────────────────────────────
+
+void show_welcome_screen() {
+  clean_screen();
+
+  std::cout << std::endl << std::endl << std::endl;
+
+  std::cout << "    ╭─────┬────────────────────────────╮" << std::endl
+            << "    │ ZEA │        WELCOME TO          │" << std::endl
+            << "    ├─────╯   T I C  T A C  T O E      │" << std::endl
+            << "    │              Version 1           │" << std::endl
+            << "    ╰──────────────────────────────────╯" << std::endl;
+
+  std::cout << std::endl << std::endl;
+
+  std::cout << "       Press Anything to Start ";
+  getchar();
+}
+
 // ─── Main Setup ──────────────────────────────────────────────────────────────
 
 void setup() {
+  show_welcome_screen();
+
   current_turn = choose_random_first_player();
 
   if (does_state_exists()) {
