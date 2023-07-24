@@ -38,6 +38,53 @@ int compute_row_chance(int row, int column, char xo) {
   return moves_to_win;
 }
 
+int compute_column_chance(int row, int column, char xo) {
+  char opponent = get_opponent(xo);
+  int moves_to_win = dimension - 1;
+
+  for (int row = 0; row < dimension; row++) {
+    if (grid[row][column] == xo) {
+      moves_to_win--;
+    }
+
+    if (grid[row][column] == opponent) {
+      return 0;
+    }
+  }
+
+  return moves_to_win;
+}
+
+int compute_ltr_diagonal_chance(int index, char xo) {
+  char opponent = get_opponent(xo);
+  int moves_to_win = dimension - 1;
+  for (int index = 0; index < dimension; index++) {
+    if (grid[index][index] == xo) {
+      moves_to_win--;
+    }
+    if (grid[index][index] == opponent) {
+      return 0;
+    }
+  }
+
+  return moves_to_win;
+}
+
+int compute_rtl_diagonal_chance(int index, char xo) {
+  char opponent = get_opponent(xo);
+  int moves_to_win = dimension - 1;
+  for (int i = dimension - 1; i >= 0; i--) {
+    if (grid[i][dimension - 1 - i] == xo) {
+      moves_to_win--;
+    }
+    if (grid[i][dimension - 1 - i] == opponent) {
+      return 0;
+    }
+  }
+
+  return moves_to_win;
+}
+
 int compute_win_chance(int row, int column, char xo) {}
 
 void play_best_move(char xo) {
