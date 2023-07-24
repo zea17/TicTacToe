@@ -7,7 +7,10 @@
 
 // ─── Clears The Screen ───────────────────────────────────────────────────────
 
-void clean_screen() { system("clear"); }
+void clean_screen() {
+  system("clear");
+  std::cout << std::endl;
+}
 
 // ─── Prints A Given Text Repeatedly For A Specified Number Of Times ──────────
 

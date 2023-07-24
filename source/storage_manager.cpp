@@ -17,7 +17,7 @@ bool does_state_exists() {
   return !settings_file.fail();
 }
 
-// ─── Storing State ───────────────────────────────────────────────────────────
+// ─── Load State ──────────────────────────────────────────────────────────────
 
 /// @brief loads the state of the game from the storage file
 void load_state() {
@@ -40,6 +40,8 @@ void load_state() {
   setting_file.close();
 }
 
+// ─── Save State ──────────────────────────────────────────────────────────────
+
 void save_state() {
   std::ofstream setting_file(SETTING_FILE_PATH);
   setting_file << dimension << std::endl
@@ -53,6 +55,8 @@ void save_state() {
 
   setting_file.close();
 }
+
+// ─── Delete State ────────────────────────────────────────────────────────────
 
 void delete_state() {
   std::ofstream ofs(SETTING_FILE_PATH);

@@ -27,6 +27,8 @@ void create_grid() {
   initialize_grid();
 }
 
+// ─── Get And Set Cell ────────────────────────────────────────────────────────
+
 char get_cell_at(int number) {
   number--;
   int row = ceil(number / dimension);
@@ -40,6 +42,8 @@ void set_cell_at(int number, char value) {
   int column = (number - row * dimension);
   grid[row][column] = value;
 }
+
+// ─── Count Played Moves ──────────────────────────────────────────────────────
 
 int count_played_moves() {
   int counter = 0;

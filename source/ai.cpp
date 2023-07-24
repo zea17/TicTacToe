@@ -8,6 +8,8 @@
 #include "hard_ai.hpp"
 #include "medium_ai.hpp"
 
+// ─── Tools ───────────────────────────────────────────────────────────────────
+
 int generate_random(int min, int max) {
   srand(time(NULL));
   return min + rand() % (max - min + 1);
@@ -19,6 +21,8 @@ char choose_random_first_player() {
   }
   return O_VALUE;
 }
+
+// ─── Main Ai Playing Function ────────────────────────────────────────────────
 
 void play_with_ai(char xo) {
   switch (game_level) {

@@ -3,6 +3,8 @@
 #include "globals.hpp"
 #include "grid.hpp"
 
+// ─── Get Opponent ────────────────────────────────────────────────────────────
+
 char get_opponent(char xo) {
   if (xo == O_VALUE) {
     return X_VALUE;
@@ -10,7 +12,9 @@ char get_opponent(char xo) {
   return O_VALUE;
 }
 
-bool play_on_rows_as(char xo) {
+// ─── Play By Defending ───────────────────────────────────────────────────────
+
+bool play_defend_on_rows_as(char xo) {
   char opponent = get_opponent(xo);
 
   // for each row
@@ -40,7 +44,7 @@ bool play_on_rows_as(char xo) {
   return false;
 }
 
-bool play_on_columns_as(char xo) {
+bool play_defend_on_columns_as(char xo) {
   char opponent = get_opponent(xo);
 
   // for each row
@@ -70,7 +74,7 @@ bool play_on_columns_as(char xo) {
   return false;
 }
 
-bool detect_ltr_diagonal_win(char xo) {
+bool play_defend_on_ltr_diagonal(char xo) {
   int count = 0;
   char opponent = get_opponent(xo);
 
@@ -92,7 +96,7 @@ bool detect_ltr_diagonal_win(char xo) {
   return false;
 }
 
-bool detect_rtl_diagonal_win(char xo) {
+bool lay_defend_on_rtl_diagonal(char xo) {
   int count = 0;
   char opponent = get_opponent(xo);
 
@@ -119,20 +123,22 @@ bool detect_rtl_diagonal_win(char xo) {
 }
 
 bool play_with_defend(char xo) {
-  if (play_on_columns_as(xo)) {
+  if (play_defend_on_columns_as(xo)) {
     return true;
   }
-  if (play_on_rows_as(xo)) {
+  if (play_defend_on_rows_as(xo)) {
     return true;
   }
-  if (detect_ltr_diagonal_win(xo)) {
+  if (play_defend_on_ltr_diagonal(xo)) {
     return true;
   }
-  if (detect_rtl_diagonal_win(xo)) {
+  if (lay_defend_on_rtl_diagonal(xo)) {
     return true;
   }
   return false;
 }
+
+// ─── Medium Ai ───────────────────────────────────────────────────────────────
 
 void play_with_medium_ai(char xo) {
   if (play_with_defend(xo)) {

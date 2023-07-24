@@ -3,6 +3,8 @@
 #include "globals.hpp"
 #include "grid.hpp"
 
+// ─── Easy Ai ─────────────────────────────────────────────────────────────────
+
 void play_with_easy_ai(char xo) {
   int max_number = dimension * dimension;
   while (true) {

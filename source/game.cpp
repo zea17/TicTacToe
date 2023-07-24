@@ -8,6 +8,8 @@
 #include "terminal.hpp"
 #include "win_detector.hpp"
 
+// ─── Prompting The User ──────────────────────────────────────────────────────
+
 void prompt_and_play_for_user(char xo) {
   int cell_number = prompt_user_for_play(xo);
 
@@ -20,6 +22,8 @@ void prompt_and_play_for_user(char xo) {
     prompt_and_play_for_user(xo);
   }
 }
+
+// ─── Win And Tie Messages ────────────────────────────────────────────────────
 
 bool show_win_message_if_win_exist() {
   char winner;
@@ -43,11 +47,13 @@ bool show_tie_message() {
   return true;
 }
 
+// ─── Main Game Loop ──────────────────────────────────────────────────────────
+
 void game_loop() {
   char winner = EMPTY_VALUE;
 
   while (true) {
-    clean_screen();
+    // Rendering game
     render_game();
 
     // If it's X's Turn
@@ -66,11 +72,13 @@ void game_loop() {
       current_turn = X_VALUE;
     }
 
+    // Checking if the game has to be stopped:
     if (show_win_message_if_win_exist() || show_tie_message()) {
       delete_state();
       break;
     }
 
+    // saving the state
     save_state();
   }
 }

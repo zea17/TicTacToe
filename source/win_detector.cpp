@@ -2,6 +2,8 @@
 #include "globals.hpp"
 #include "grid.hpp"
 
+// ─── Detect Win ──────────────────────────────────────────────────────────────
+
 char detect_column_win() {
   for (int column = 0; column < dimension; column++) {
     char first_element = grid[0][column];
@@ -106,5 +108,7 @@ char detect_win() {
   }
   return EMPTY_VALUE;
 }
+
+// ─── Detect Tie ──────────────────────────────────────────────────────────────
 
 bool detect_tie() { return count_played_moves() == dimension * dimension; }
