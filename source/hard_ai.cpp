@@ -21,6 +21,34 @@ int get_opposite_index(int index) {
   return 0;
 }
 
+int compute_row_chance(int row, int column, char xo) {
+  char opponent = get_opponent(xo);
+  int moves_to_win = dimension - 1;
+
+  for (int column = 0; column < dimension; column++) {
+    if (grid[row][column] == xo) {
+      moves_to_win--;
+    }
+
+    if (grid[row][column] == opponent) {
+      return 0;
+    }
+  }
+
+  return moves_to_win;
+}
+
+int compute_win_chance(int row, int column, char xo) {}
+
+void play_best_move(char xo) {
+  int max_opportunity = 0;
+  for (int row = 0; row < dimension; row++) {
+    for (int column = 0; column < dimension; column++) {
+      /* code */
+    }
+  }
+}
+
 int random_corner_index() { return get_start_or_end(generate_random(0, 1)); }
 
 void play_first_move(char xo) {
