@@ -107,13 +107,4 @@ char detect_win() {
   return EMPTY_VALUE;
 }
 
-bool detect_tie() {
-  for (int column = 0; column < dimension; column++) {
-    for (int row = 0; row < dimension; row++) {
-      if (grid[row][column] == '-') {
-        return false;
-      }
-    }
-  }
-  return true;
-}
+bool detect_tie() { return count_played_moves() == dimension * dimension; }

@@ -4,3 +4,4 @@ void allocate_grid();
 void create_grid();
 char get_cell_at(int);
 void set_cell_at(int, char);
+int count_played_moves();
