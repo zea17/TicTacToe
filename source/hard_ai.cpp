@@ -127,13 +127,7 @@ int random_corner_index() {
   return dimension - 1;
 }
 
-void play_first_move(char xo) {
-  int row = random_corner_index();
-  int column = random_corner_index();
-  grid[row][column] = xo;
-}
-
-bool play_second_move(char xo) {
+bool play_first_move(char xo) {
   int center_index = get_center();
   if (grid[center_index][center_index] == EMPTY_VALUE && dimension_is_odd()) {
     grid[center_index][center_index] = xo;
@@ -276,22 +270,21 @@ bool play_move_to_win(char xo) {
 void play_with_hard_ai(char xo) {
   int moves_count = count_played_moves();
 
-  if (moves_count == 0) {
-    play_first_move(xo);
+  if (moves_count <= 2 && play_first_move(xo)) {
     return;
   }
 
-  if (moves_count <= 2 && play_second_move(xo)) {
-    return;
-  }
   if (play_move_to_win(xo)) {
     return;
   }
+
   if (play_with_defend(xo)) {
     return;
   }
+
   if (play_best_move(xo)) {
     return;
   }
+
   play_with_easy_ai(xo);
 }
