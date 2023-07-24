@@ -5,3 +5,4 @@ void clean_screen();
 void render_game();
 int prompt_user_for_play(char);
 char choose_random_first_player();
+void print_decoration_line();

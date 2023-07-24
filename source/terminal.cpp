@@ -9,9 +9,11 @@
 
 // ─── Clears The Screen ───────────────────────────────────────────────────────
 
-void clean_screen() {
-  system("clear");
-  std::cout << std::endl;
+void clean_screen() { system("clear"); }
+
+void print_decoration_line() {
+  std::cout << std::endl
+            << LEFT_PADDING << "─ ✦ ──────────────────" << std::endl;
 }
 
 // ─── Prints A Given Text Repeatedly For A Specified Number Of Times ──────────
@@ -129,6 +131,9 @@ void render_horizontal_lines(int cell_width) {
 
 void render_game() {
   clean_screen();
+  print_decoration_line();
+
+  std::cout << std::endl;
 
   int cell_width = compute_cell_width();
   int cell_number = 1;

@@ -13,9 +13,10 @@
 bool ask_user_should_we_load_previous_game() {
   int should_continue;
 
-  std::cout << "───────────────────────────────────────────────────────────────"
-            << std::endl
-            << "  You didn't finish your previous game. Press 1 to continue"
+  clean_screen();
+  print_decoration_line();
+
+  std::cout << "  You didn't finish your previous game. Press 1 to continue"
             << std::endl
             << "  playing that game, and any other number to skip." << std::endl
             << std::endl
@@ -31,9 +32,9 @@ int choose_dimension() {
   int size;
 
   while (true) {
+    print_decoration_line();
+
     std::cout
-        << "───────────────────────────────────────────────────────────────"
-        << std::endl
         << "  Enter the dimensions of the Tic-Tac-Toe board (3 and above): "
         << std::endl
         << std::endl
@@ -59,15 +60,14 @@ int choose_number_of_players() {
   int number_of_players;
 
   while (true) {
-    std::cout
-        << "───────────────────────────────────────────────────────────────"
-        << std::endl
-        << "  Choose the number of players:" << std::endl
-        << "  • 1 - Play against the computer" << std::endl
-        << "  • 2 - Play against a friend" << std::endl
-        << "  • 3 - Back" << std::endl
-        << std::endl
-        << "  > ";
+    print_decoration_line();
+    std::cout << "  Choose the number of players:" << std::endl
+              << std::endl
+              << "  • 1 - Play against the computer" << std::endl
+              << "  • 2 - Play against a friend" << std::endl
+              << "  • 3 - Back" << std::endl
+              << std::endl
+              << "  > ";
 
     std::cin >> number_of_players;
 
@@ -89,16 +89,15 @@ int choose_game_level() {
   int choice;
 
   while (true) {
-    std::cout
-        << "───────────────────────────────────────────────────────────────"
-        << std::endl
-        << "  Choose the game level:" << std::endl
-        << "  • 1 - Easy" << std::endl
-        << "  • 2 - Medium" << std::endl
-        << "  • 3 - Hard" << std::endl
-        << "  • 4 - Back" << std::endl
-        << std::endl
-        << "  > ";
+    print_decoration_line();
+    std::cout << "  Choose the game level:" << std::endl
+              << std::endl
+              << "  • 1 - Easy" << std::endl
+              << "  • 2 - Medium" << std::endl
+              << "  • 3 - Hard" << std::endl
+              << "  • 4 - Back" << std::endl
+              << std::endl
+              << "  > ";
     std::cin >> choice;
 
     switch (choice) {
