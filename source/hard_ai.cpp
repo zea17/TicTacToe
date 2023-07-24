@@ -4,6 +4,8 @@
 #include "grid.hpp"
 #include "medium_ai.hpp"
 
+#include <iostream>
+
 bool dimension_is_odd() { return dimension % 2 == 1; }
 
 int get_center() { return dimension / 2; }
@@ -85,15 +87,43 @@ int compute_rtl_diagonal_chance(int index, char xo) {
   return moves_to_win;
 }
 
-int compute_win_chance(int row, int column, char xo) {}
+int compute_win_chance(int row, int column, char xo) {
+  int win_chance = 0;
 
-void play_best_move(char xo) {
+  win_chance += compute_column_chance(row, column, xo) +
+                compute_row_chance(row, column, xo);
+  if (column == dimension - row - 1) {
+    win_chance += compute_rtl_diagonal_chance(row, xo);
+  }
+  if (row == column) {
+    win_chance += compute_ltr_diagonal_chance(row, xo);
+  }
+  return win_chance;
+}
+
+bool play_best_move(char xo) {
   int max_opportunity = 0;
+  int row_index = -1;
+  int column_index = -1;
+
   for (int row = 0; row < dimension; row++) {
     for (int column = 0; column < dimension; column++) {
-      /* code */
+      if (grid[row][column] == EMPTY_VALUE) {
+
+        int chance = compute_win_chance(row, column, xo);
+        if (chance > max_opportunity) {
+          max_opportunity = chance;
+          row_index = row;
+          column_index = column;
+        }
+      }
     }
   }
+  if (row_index > -1 && column_index > -1) {
+    grid[row_index][column_index] = xo;
+    return true;
+  }
+  return false;
 }
 
 int random_corner_index() { return get_start_or_end(generate_random(0, 1)); }
@@ -283,9 +313,8 @@ void play_with_hard_ai(char xo) {
   if (play_with_defend(xo)) {
     return;
   }
-  if (play_with_fork_strategy(xo)) {
+  if (play_best_move(xo)) {
     return;
   }
-
   play_with_easy_ai(xo);
 }
