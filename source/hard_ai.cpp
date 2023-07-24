@@ -389,13 +389,13 @@ void play_with_hard_ai(char xo) {
   if (moves_count < 2 && play_the_best_first_move(xo)) {
     return;
   }
+  if (play_the_move_to_win(xo)) {
+    return;
+  }
   if (play_with_defend(xo)) {
     return;
   }
   if (moves_count >= 2 && moves_count < 4 && second_move(xo)) {
-    return;
-  }
-  if (play_the_move_to_win(xo)) {
     return;
   }
   if (play_by_blocking_opponent(xo)) {
