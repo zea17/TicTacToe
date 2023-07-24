@@ -57,6 +57,54 @@ bool play_with_fork_strategy(char xo) {
   }
 }
 
+bool play_on_row_win_strategy_(char xo) {
+  // for each row
+  for (int column = 0; column < dimension; column++) {
+
+    int count = 0;
+    for (int row = 0; row < dimension; row++) {
+      if (grid[row][column] == xo) {
+        count++;
+      }
+    }
+    // if it was enough, try to put your turn in the middle:
+    if (count == 2) {
+      for (int row = 0; row < dimension; row++) {
+        if (grid[row][column] == EMPTY_VALUE) {
+          grid[row][column] = xo;
+          return true;
+        }
+      }
+    }
+  }
+  return false;
+}
+
+bool play_column_win_strategy(char xo) {
+  // for each row
+  for (int row = 0; row < dimension; row++) {
+    // count how many times the opponent has appeared
+    int count = 0;
+
+    // count the opponent
+    for (int column = 0; column < dimension; column++) {
+      if (grid[row][column] == xo) {
+        count++;
+      }
+    }
+
+    // if it was enough, try to put your turn in the middle:
+    if (count == 2) {
+      for (int column = 0; column < dimension; column++) {
+        if (grid[row][column] == EMPTY_VALUE) {
+          grid[row][column] = xo;
+          return true;
+        }
+      }
+    }
+  }
+}
+
 void play_with_hard_ai(char xo) {
   int moves_count = count_played_moves();
 
