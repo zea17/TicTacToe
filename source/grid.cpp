@@ -1,5 +1,6 @@
 #include "grid.hpp"
 #include "globals.hpp"
+#include <cmath>
 #include <iostream>
 
 // ─── Allocates Memory For The Game Grid ──────────────────────────────────────
