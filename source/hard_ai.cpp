@@ -95,6 +95,24 @@ int compute_win_chance(int row, int column, char xo) {
   return win_chance;
 }
 
+bool block_opponent(char xo) {
+  char opponent = get_opponent(xo);
+  int threshold = 2 * (dimension - 1);
+  for (int row = 0; row < dimension; row++) {
+    for (int column = 0; column < dimension; column++) {
+      if (grid[row][column] == EMPTY_VALUE) {
+
+        int chance = compute_win_chance(row, column, opponent);
+        if (chance >= threshold) {
+          grid[row][column] = xo;
+          return true;
+        }
+      }
+    }
+  }
+  return false;
+}
+
 bool play_best_move(char xo) {
   int max_opportunity = 0;
   int row_index = -1;
@@ -120,13 +138,6 @@ bool play_best_move(char xo) {
   return false;
 }
 
-int random_corner_index() {
-  if (generate_random(0, 1) == 1) {
-    return 0;
-  }
-  return dimension - 1;
-}
-
 bool play_first_move(char xo) {
   int center_index = get_center();
   if (grid[center_index][center_index] == EMPTY_VALUE && dimension_is_odd()) {
@@ -137,6 +148,97 @@ bool play_first_move(char xo) {
     grid[0][dimension - 1] = xo;
     return true;
   }
+  return false;
+}
+
+bool second_move(char xo) {
+  char opponent = get_opponent(xo);
+  int left = 0;
+  int right = 0;
+  int top = 0;
+  int bottom = 0;
+
+  for (int column = 0; column < dimension; column++) {
+    if (grid[0][column] == opponent) {
+      top += 1;
+    }
+    if (grid[dimension - 1][column] == opponent) {
+      bottom += 1;
+    }
+  }
+  for (int row = 0; row < dimension; row++) {
+    if (grid[row][0] == opponent) {
+      left += 1;
+    }
+    if (grid[row][dimension - 1] == opponent) {
+      right += 1;
+    }
+  }
+
+  // Case of two
+  if (top + left == 2 && grid[0][0] == EMPTY_VALUE) {
+    grid[0][0] = xo;
+    return true;
+  }
+  if (top + right == 2 && grid[0][dimension - 1] == EMPTY_VALUE) {
+    grid[0][dimension - 1] = xo;
+    return true;
+  }
+  if (left + bottom == 2 && grid[dimension - 1][0] == EMPTY_VALUE) {
+    grid[dimension - 1][0] = xo;
+    return true;
+  }
+  if (right + bottom == 2 &&
+      grid[dimension - 1][dimension - 1] == EMPTY_VALUE) {
+    grid[dimension - 1][dimension - 1] = xo;
+    return true;
+  }
+
+  // case of one
+  if (top == 1) {
+    if (grid[0][0] == EMPTY_VALUE) {
+      grid[0][0] = xo;
+      return true;
+    }
+    if (grid[0][dimension - 1] == EMPTY_VALUE) {
+      grid[0][dimension - 1] = xo;
+      return true;
+    }
+  }
+
+  if (bottom == 1) {
+    if (grid[dimension - 1][0] == EMPTY_VALUE) {
+      grid[dimension - 1][0] = xo;
+      return true;
+    }
+    if (grid[dimension - 1][dimension - 1] == EMPTY_VALUE) {
+      grid[dimension - 1][dimension - 1] = xo;
+      return true;
+    }
+  }
+
+  if (left == 1) {
+    if (grid[0][0] == EMPTY_VALUE) {
+      grid[0][0] = xo;
+      return true;
+    }
+    if (grid[dimension - 1][0] == EMPTY_VALUE) {
+      grid[dimension - 1][0] = xo;
+      return true;
+    }
+  }
+
+  if (right == 1) {
+    if (grid[0][dimension - 1] == EMPTY_VALUE) {
+      grid[0][dimension - 1] = xo;
+      return true;
+    }
+    if (grid[0][dimension - 1] == EMPTY_VALUE) {
+      grid[0][dimension - 1] = xo;
+      return true;
+    }
+  }
+
   return false;
 }
 
@@ -270,7 +372,13 @@ bool play_move_to_win(char xo) {
 void play_with_hard_ai(char xo) {
   int moves_count = count_played_moves();
 
-  if (moves_count <= 2 && play_first_move(xo)) {
+  if (moves_count < 2 && play_first_move(xo)) {
+    return;
+  }
+  if (play_with_defend(xo)) {
+    return;
+  }
+  if (moves_count >= 2 && moves_count < 4 && second_move(xo)) {
     return;
   }
 
@@ -278,13 +386,11 @@ void play_with_hard_ai(char xo) {
     return;
   }
 
-  if (play_with_defend(xo)) {
+  if (block_opponent(xo)) {
     return;
   }
-
   if (play_best_move(xo)) {
     return;
   }
-
   play_with_easy_ai(xo);
 }
