@@ -8,6 +8,18 @@
 #include "terminal.hpp"
 #include "win_detector.hpp"
 
+int count_played_moves() {
+  int counter = 0;
+  for (int row = 0; row < dimension; row++) {
+    for (int column = 0; column < dimension; column++) {
+      if (grid[row][column] != EMPTY_VALUE) {
+        counter++;
+      }
+    }
+  }
+  return counter;
+}
+
 void prompt_and_play_for_user(char xo) {
   int cell_number = prompt_user_for_play(xo);
 
