@@ -14,6 +14,7 @@ bool play_second_move(char xo) {
     grid[center_index][center_index] = xo;
     return true;
   }
+  grid[dimension - 1][(dimension - 1)] = xo;
 }
 
 void play_with_hard_ai(char xo) {
