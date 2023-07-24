@@ -118,19 +118,25 @@ bool detect_rtl_diagonal_win(char xo) {
   return false;
 }
 
-void play_with_medium_ai(char xo) {
+bool play_with_defend(char xo) {
   if (play_on_columns_as(xo)) {
-    return;
+    return true;
   }
   if (play_on_rows_as(xo)) {
-    return;
+    return true;
   }
   if (detect_ltr_diagonal_win(xo)) {
-    return;
+    return true;
   }
   if (detect_rtl_diagonal_win(xo)) {
+    return true;
+  }
+  return false;
+}
+
+void play_with_medium_ai(char xo) {
+  if (play_with_defend(xo)) {
     return;
   }
-
   play_with_easy_ai(xo);
 }
