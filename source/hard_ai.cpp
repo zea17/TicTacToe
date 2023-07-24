@@ -10,12 +10,6 @@ bool dimension_is_odd() { return dimension % 2 == 1; }
 
 int get_center() { return dimension / 2; }
 
-int get_start_or_end(int index) {
-  if (index == 0) {
-    return 0;
-  }
-  return dimension - 1;
-}
 int get_opposite_index(int index) {
   if (index == 0) {
     return dimension - 1;
@@ -126,7 +120,12 @@ bool play_best_move(char xo) {
   return false;
 }
 
-int random_corner_index() { return get_start_or_end(generate_random(0, 1)); }
+int random_corner_index() {
+  if (generate_random(0, 1) == 1) {
+    return 0;
+  }
+  return dimension - 1;
+}
 
 void play_first_move(char xo) {
   int row = random_corner_index();
@@ -143,28 +142,6 @@ bool play_second_move(char xo) {
   if (grid[0][dimension - 1] == EMPTY_VALUE) {
     grid[0][dimension - 1] = xo;
     return true;
-  }
-  return false;
-}
-
-bool play_with_fork_strategy(char xo) {
-  for (int row = 0; row < 2; row++) {
-    int row_index = get_start_or_end(row);
-
-    for (int column = 0; column < 2; column++) {
-      int column_index = get_start_or_end(column);
-
-      if (grid[row_index][column_index] == xo) {
-        if (grid[get_opposite_index(row_index)][column_index] == EMPTY_VALUE) {
-          grid[get_opposite_index(row_index)][column_index] = xo;
-          return true;
-        }
-        if (grid[row_index][get_opposite_index(column_index)] == EMPTY_VALUE) {
-          grid[get_opposite_index(row_index)][column_index] = xo;
-          return true;
-        }
-      }
-    }
   }
   return false;
 }
