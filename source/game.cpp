@@ -18,8 +18,7 @@ void prompt_and_play_for_user(char xo) {
   }
 
   else {
-    std::cout << "  🚩 Cell" << cell_number << " is already filled."
-              << std::endl
+    std::cout << "  Cell" << cell_number << " is already filled." << std::endl
               << "  please choose another number" << std::endl;
 
     prompt_and_play_for_user(xo);
@@ -36,9 +35,7 @@ bool show_win_message_if_win_exist() {
 
   render_game();
 
-  std::cout << "  💃🏻💃🏻 Winner is : " << winner << " :) 💃🏻💃🏻 "
-            << std::endl
-            << std::endl;
+  std::cout << "  Winner is : " << winner << " :)" << std::endl << std::endl;
 
   return true;
 }

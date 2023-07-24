@@ -170,7 +170,7 @@ int prompt_user_for_play(char xo) {
       return cell_number;
     }
 
-    std::cout << "\n  🚦 Invalid move. Please enter a number between 1 and "
+    std::cout << "\n  Invalid move. Please enter a number between 1 and "
               << dimension * dimension << "\n\n";
   }
 }
