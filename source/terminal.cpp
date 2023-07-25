@@ -5,15 +5,26 @@
 #include "globals.hpp"
 #include "terminal.hpp"
 
-#define LEFT_PADDING "  "
-
 // ─── Clears The Screen ───────────────────────────────────────────────────────
 
 void clean_screen() { system("clear"); }
 
+// ─── Decorations ─────────────────────────────────────────────────────────────
+
 void print_decoration_line() {
   std::cout << std::endl
             << LEFT_PADDING << "─ ✦ ──────────────────" << std::endl;
+}
+
+// ─── Coloring ────────────────────────────────────────────────────────────────
+
+void print_colored_xo(char xo) {
+  if (xo == O_VALUE) {
+    std::cout << "\033[1;33m"; // Yellow
+  } else {
+    std::cout << "\033[1;35m"; // Purple
+  }
+  std::cout << xo << "\033[0m";
 }
 
 // ─── Prints A Given Text Repeatedly For A Specified Number Of Times ──────────
@@ -72,11 +83,11 @@ bool is_cell_a_winner(int cell_number) {
 
 void print_cell_color(int cell_number, char cell_content) {
   if (is_cell_a_winner(cell_number)) {
-    std::cout << "\033[1;32m";
+    std::cout << TERM_GREEN; // Green
   } else if (cell_content == O_VALUE) {
-    std::cout << "\033[1;33m";
+    std::cout << TERM_YELLOW; // Yellow
   } else {
-    std::cout << "\033[1;35m";
+    std::cout << TERM_PURPLE; // Purple
   }
 }
 
@@ -97,7 +108,7 @@ void render_cell(int cell_width, int cell_number, char cell_content,
 
   else {
     print_cell_color(cell_number, cell_content);
-    std::cout << cell_content << "\033[0m";
+    std::cout << cell_content << TERM_RESET;
   }
 
   print_repeated_text(" ", right_padding);
@@ -162,7 +173,12 @@ void render_game() {
 int prompt_user_for_play(char xo) {
   while (true) {
     int cell_number;
-    std::cout << "  Player " << xo << ", enter your move:\n\n  > ";
+    std::cout << LEFT_PADDING << "Player ";
+    print_colored_xo(xo);
+
+    std::cout << "," << std::endl
+              << LEFT_PADDING << TERM_ITALIC
+              << "Enter your move: " << TERM_RESET;
     std::cin >> cell_number;
 
     // with help from stack over flow
@@ -176,7 +192,9 @@ int prompt_user_for_play(char xo) {
       return cell_number;
     }
 
-    std::cout << "\n  Invalid move. Please enter a number between 1 and "
-              << dimension * dimension << "\n\n";
+    std::cout << std::endl
+              << LEFT_PADDING << "Invalid Move: Enter a number" << std::endl
+              << "between 1 and " << dimension * dimension << std::endl
+              << std::endl;
   }
 }
