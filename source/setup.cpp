@@ -34,11 +34,10 @@ int choose_dimension() {
   while (true) {
     print_decoration_line();
 
-    std::cout
-        << "  Enter the dimensions of the Tic-Tac-Toe board (3 and above): "
-        << std::endl
-        << std::endl
-        << "  > ";
+    std::cout << LEFT_PADDING << "Enter the dimensions of the" << std::endl
+              << LEFT_PADDING << "Tic-Tac-Toe board (min: 3) " << std::endl
+              << std::endl
+              << "  > ";
 
     std::cin >> size;
 
