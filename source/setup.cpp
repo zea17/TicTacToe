@@ -156,15 +156,22 @@ void show_welcome_screen() {
 
   std::cout << std::endl << std::endl << std::endl;
 
-  std::cout << "    ╭─────┬────────────────────────────╮" << std::endl
-            << "    │ ZEA │        WELCOME TO          │" << std::endl
-            << "    ├─────╯   T I C  T A C  T O E      │" << std::endl
-            << "    │              Version 1           │" << std::endl
-            << "    ╰──────────────────────────────────╯" << std::endl;
-
-  std::cout << std::endl << std::endl;
-
-  std::cout << "       Press Anything to Start ";
+  std::cout
+      << "  ╭─────┬───────────────────╮" << std::endl
+      << "  │ ZEA │                   │" << std::endl
+      << "  ├─────╯                   │" << std::endl
+      << "  │                         │" << std::endl
+      << "  │   \033[1;33mT \033[1;35mI \033[1;33mC  \033[1;35mT \033[1;33mA "
+         "\033[1;35mC  \033[1;33mT \033[1;35mO \033[1;33mE \033[0m  │"
+      << std::endl
+      << "  │      \x1B[3m\x1B[36mFirst Edition\x1B[0m      │" << std::endl
+      << "  │                         │" << std::endl
+      << "  ├ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ┤" << std::endl
+      << "  │    \x1B[3mBy Zeynab Akbari\x1B[0m     │" << std::endl
+      << "  ╰─────────────────────────╯" << std::endl
+      << std::endl
+      << std::endl;
+  std::cout << "    > Press Enter to Start ";
   getchar();
 }
 
