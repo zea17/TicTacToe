@@ -1,6 +1,6 @@
 # Zea's Tic Tac Toe
 
-![Screenshot of Zea's Tic Tac Toe](https://github.com/zea17/dragon-bank/assets/93328643/740c6c04-5792-4f0f-a815-35c02e09babc)
+![Screenshot of Zea's Tic Tac Toe](https://github.com/zea17/dragon-bank/assets/93328643/7eced1bd-a69d-44c9-949b-e38f072a713e)
 
 A C++ Tic Tac Toe Game for the Terminal that has:
 
