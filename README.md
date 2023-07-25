@@ -50,6 +50,7 @@ The binary executable will be available at `xo/bin/ttt`.
 
 # install the app
 % mv ./bin/ttt /usr/local/bin/ttt
+% chmod u+x /usr/local/bin/ttt
 ```
 
 <br>
