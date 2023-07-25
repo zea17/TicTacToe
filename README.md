@@ -19,11 +19,37 @@ If you play the game on the Hard level, the AI will throw a lots of hard plays a
 
 ## How to run?
 
-Install GCC/Clang on your system and run:
+### On Desktop
+
+You need to have GCC or LLVM+Clang (macOS) on your system + installation of BASH. Then you should clone this repo and build it with:
 
 ```bash
-% chmod u+x ./run.sh
-% ./run.sh
+% git clone https://github.com/zea17/TicTacToe.git xo
+
+% cd xo
+
+% bash build.sh
+```
+
+The binary executable will be available at `xo/bin/ttt`.
+
+### On [iSH App](https://ish.app)
+
+```sh
+# Install GCC + Git + BASH
+% apk add build-base
+% apk add git
+% apk add bash
+
+# Clone the repo
+% git clone https://github.com/zea17/TicTacToe.git xo
+% cd xo
+
+# Build
+% bash build.sh
+
+# install the app
+% mv ./bin/ttt /usr/local/bin/ttt
 ```
 
 <br>
