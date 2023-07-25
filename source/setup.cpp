@@ -16,9 +16,10 @@ bool ask_user_should_we_load_previous_game() {
   clean_screen();
   print_decoration_line();
 
-  std::cout << "  You didn't finish your previous game. Press 1 to continue"
+  std::cout << LEFT_PADDING << "Previous game save exist" << std::endl
             << std::endl
-            << "  playing that game, and any other number to skip." << std::endl
+            << LEFT_PADDING << "• 1     - Continue Previous Game" << std::endl
+            << LEFT_PADDING << "• Other - New Game" << std::endl
             << std::endl
             << "  > ";
 
