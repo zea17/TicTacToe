@@ -24,33 +24,29 @@ If you play the game on the Hard level, the AI will throw a lots of hard plays a
 You need to have GCC or LLVM+Clang (macOS) on your system + installation of BASH. Then you should clone this repo and build it with:
 
 ```bash
+# Cloning the repo
 % git clone https://github.com/zea17/TicTacToe.git xo
-
 % cd xo
 
+# Building the
 % bash build.sh
+
+# Installing the app and giving it permission to run:
+% mv ./bin/ttt /usr/local/bin/ttt
+% chmod u+x /usr/local/bin/ttt
 ```
 
-The binary executable will be available at `xo/bin/ttt`.
 
 ### On [iSH App](https://ish.app)
 
-```sh
+Building on iSH is exactly like the desktop, however you must have
+the GCC, Git and Bash installed. You can install them by running:
+
+```bash
 # Install GCC + Git + BASH
 % apk add build-base
 % apk add git
 % apk add bash
-
-# Clone the repo
-% git clone https://github.com/zea17/TicTacToe.git xo
-% cd xo
-
-# Build
-% bash build.sh
-
-# install the app
-% mv ./bin/ttt /usr/local/bin/ttt
-% chmod u+x /usr/local/bin/ttt
 ```
 
 <br>
