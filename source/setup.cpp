@@ -167,7 +167,8 @@ void show_welcome_screen() {
       << "  │      \x1B[3m\x1B[36mFirst Edition\x1B[0m      │" << std::endl
       << "  │                         │" << std::endl
       << "  ├ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ┤" << std::endl
-      << "  │    \x1B[3mBy Zeynab Akbari\x1B[0m     │" << std::endl
+      << "  │    " << TERM_ITALIC << "By Zeynab Akbari" << TERM_RESET
+      << "     │" << std::endl
       << "  ╰─────────────────────────╯" << std::endl
       << std::endl
       << std::endl;
