@@ -18,8 +18,10 @@ void prompt_and_play_for_user(char xo) {
   }
 
   else {
-    std::cout << "  Cell" << cell_number << " is already filled." << std::endl
-              << "  please choose another number" << std::endl;
+    std::cout << LEFT_PADDING << "Cell" << cell_number << " is already filled."
+              << std::endl
+              << LEFT_PADDING << "Choose another number" << std::endl
+              << std::endl;
 
     prompt_and_play_for_user(xo);
   }
@@ -48,8 +50,9 @@ bool show_tie_message() {
   }
 
   render_game();
-  std::cout << "  Sorry but nobody won :(" << std::endl
-            << "  Maybe next time? " << std::endl
+  std::cout << LEFT_PADDING << "Nobody won :(" << std::endl
+            << LEFT_PADDING << TERM_ITALIC << "Maybe next time? " << TERM_RESET
+            << std::endl
             << std::endl;
 
   return true;
