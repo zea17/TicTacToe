@@ -35,7 +35,9 @@ bool show_win_message_if_win_exist() {
 
   render_game();
 
-  std::cout << "  Winner is : " << winner << " :)" << std::endl << std::endl;
+  std::cout << LEFT_PADDING << "The Winner is ";
+  print_colored_xo(winner);
+  std::cout << " :)" << std::endl << std::endl;
 
   return true;
 }
