@@ -12,4 +12,4 @@ done
 
 
 # Link the object files and create the binary at bin/app
-g++ bin/*.o -o ./bin/ttt
+g++ -static bin/*.o -o ./bin/ttt
