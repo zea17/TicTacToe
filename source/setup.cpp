@@ -46,7 +46,8 @@ int choose_dimension() {
     }
 
     std::cout << std::endl
-              << "  ERROR: Dimension must be greater that 3, please try again:"
+              << LEFT_PADDING
+              << "ERROR: Dimension must be greater that 3, please try again:"
               << std::endl;
   }
 
@@ -60,13 +61,13 @@ int choose_number_of_players() {
 
   while (true) {
     print_decoration_line();
-    std::cout << "  Choose the number of players:" << std::endl
+    std::cout << LEFT_PADDING << "Choose the number of players:" << std::endl
               << std::endl
-              << "  • 1 - Play against the computer" << std::endl
-              << "  • 2 - Play against a friend" << std::endl
-              << "  • 3 - Back" << std::endl
+              << LEFT_PADDING << "• 1 - Play against the computer" << std::endl
+              << LEFT_PADDING << "• 2 - Play against a friend" << std::endl
+              << LEFT_PADDING << "• 3 - Back" << std::endl
               << std::endl
-              << "  > ";
+              << LEFT_PADDING << "> ";
 
     std::cin >> number_of_players;
 
@@ -77,7 +78,8 @@ int choose_number_of_players() {
       return number_of_players;
 
     default:
-      std::cout << "Invalid input. Please enter 1 or 2." << std::endl;
+      std::cout << LEFT_PADDING << "Invalid input. Please enter 1 or 2."
+                << std::endl;
     }
   }
 }
@@ -89,14 +91,14 @@ int choose_game_level() {
 
   while (true) {
     print_decoration_line();
-    std::cout << "  Choose the game level:" << std::endl
+    std::cout << LEFT_PADDING << "Choose the game level:" << std::endl
               << std::endl
-              << "  • 1 - Easy" << std::endl
-              << "  • 2 - Medium" << std::endl
-              << "  • 3 - Hard" << std::endl
-              << "  • 4 - Back" << std::endl
+              << LEFT_PADDING << "• 1 - Easy" << std::endl
+              << LEFT_PADDING << "• 2 - Medium" << std::endl
+              << LEFT_PADDING << "• 3 - Hard" << std::endl
+              << LEFT_PADDING << "• 4 - Back" << std::endl
               << std::endl
-              << "  > ";
+              << LEFT_PADDING << "> ";
     std::cin >> choice;
 
     switch (choice) {
@@ -107,8 +109,8 @@ int choose_game_level() {
       return choice;
 
     default:
-      std::cout << "  ERROR: Invalid input. Please enter 1, 2, or 3."
-                << std::endl
+      std::cout << LEFT_PADDING
+                << "ERROR: Invalid input. Please enter 1, 2, or 3." << std::endl
                 << std::endl;
     }
   }
